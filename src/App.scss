@@ -1,0 +1,52 @@
+@use "@picocss/pico/scss/pico" with (
+  $semantic-root-element: "#root",
+  $enable-semantic-container: true
+);
+
+:root {
+  --header-height: 60px;
+  --footer-height: 60px;
+}
+
+html {
+  height: 100%;
+  background-color: cornflowerblue;
+}
+
+body {
+  height: 100%;
+  background-color: cadetblue;
+}
+
+#root {
+  max-width: 1280px;
+  height: calc(100% - var(--header-height) - var(--footer-height));
+  margin: 0;
+  padding: 0;
+  
+}
+
+header {
+  background-color: beige;
+  width: 100%;
+  height: var(--header-height);
+}
+
+#main-content {
+  height: 100%;
+  display: flex;
+  flex-flow: row;
+  margin-bottom: 0;
+  background-color: blue;
+   & aside {
+    background-color: lightcoral;
+   }
+   main {
+    background-color: blanchedalmond ;
+   }
+}
+
+footer {
+  height: var(--footer-height);
+  background-color: aqua;
+}
