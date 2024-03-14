@@ -21,7 +21,7 @@ A little list some of the tools we used
 
 To make it easier to work with Open Props, you should install the [CSS Var Complete](https://marketplace.visualstudio.com/items?itemName=phoenisx.cssvar) extension for VS Code and add the following to your `.vscode/settings.json` file:
 
-```json
+```javascript
 // .vscode/settings.json file
 {
     ...
