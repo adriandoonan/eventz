@@ -7,7 +7,7 @@ function App() {
         <nav id="main-nav">
           <ul>
             <li>
-              <strong>Acme Corp</strong>
+              <strong>Eventz!</strong>
             </li>
           </ul>
           <ul>

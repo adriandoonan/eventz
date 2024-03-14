@@ -6,8 +6,9 @@
 /* Welcome 🎉 */
 /* Use Open-Props from NPM or CDN */
 /* @import 'open-props/style'; */
-/* @import 'https://unpkg.com/open-props'; */
+// @import 'https://unpkg.com/open-props';
 /* not needed here because JIT Props adds what you use! */
+/* but we are importing for now so we can get intellisense for props */
 
 /* 
  open-props normalize isn't required, but makes for a nice base.
@@ -16,6 +17,8 @@
  @import 'open-props/normalize';
  /* @import 'https://unpkg.com/open-props/normalize.min.css'; */
  @import 'open-props/buttons';
+
+//  @import 'open-props/src/extra/theme.light';
 
 
 
