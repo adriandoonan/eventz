@@ -1,7 +1,23 @@
-@use "@picocss/pico/scss/pico" with (
-  $semantic-root-element: "#root",
-  $enable-semantic-container: true
-);
+// footer {
+//   height: var(--footer-height);
+//   background-color: aqua;
+// }
+
+/* Welcome 🎉 */
+/* Use Open-Props from NPM or CDN */
+/* @import 'open-props/style'; */
+/* @import 'https://unpkg.com/open-props'; */
+/* not needed here because JIT Props adds what you use! */
+
+/* 
+ open-props normalize isn't required, but makes for a nice base.
+ add this to see default styles for <details> and other HTM5 elements
+ Bonus: normalize includes light and dark vars for adaptive theming */
+ @import 'open-props/normalize';
+ /* @import 'https://unpkg.com/open-props/normalize.min.css'; */
+ @import 'open-props/buttons';
+
+
 
 :root {
   --header-height: 60px;
@@ -23,13 +39,30 @@ body {
   height: calc(100% - var(--header-height) - var(--footer-height));
   margin: 0;
   padding: 0;
-  
+  background-color: plum;
 }
 
 header {
   background-color: beige;
   width: 100%;
   height: var(--header-height);
+  padding: 1.25rem;
+
+  nav#main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ul:nth-child(1) {
+      list-style-type: none;
+    }
+    
+    ul:nth-child(2) {
+      display: flex;
+      list-style-type: none;
+      gap:  0.5rem;
+    }
+  }
 }
 
 #main-content {
@@ -40,9 +73,17 @@ header {
   background-color: blue;
    & aside {
     background-color: lightcoral;
+
+    nav ul {
+      list-style-type: none;
+    }
    }
    main {
     background-color: blanchedalmond ;
+    justify-self: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
    }
 }
 
