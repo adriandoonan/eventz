@@ -1,6 +1,7 @@
 import "./App.scss";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 import HomePage from "./Pages/HomePage";
 import EventsListPage from "./Pages/EventsListPage";
@@ -20,7 +21,7 @@ import localDatabase from "./eventz-db.json";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-const databasePath = "http://localhost:6969";
+export const databasePath = "http://localhost:6969";
 
 export const makeToast = (message = "Here is your toast.", icon = "👏") => {
 	toast(message, {
@@ -50,6 +51,7 @@ export const makeToast = (message = "Here is your toast.", icon = "👏") => {
 
 function App() {
 	const [events, setEvents] = useState(null);
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
 	const getEvents = async () => {
 		try {
@@ -69,7 +71,7 @@ function App() {
 	return (
 		<>
 			<Toaster />
-			<HeaderNav />
+			<HeaderNav isAuthenticated={isAuthenticated} />
 
 			<section id="main-content">
 				<SideBar />
@@ -98,7 +100,15 @@ function App() {
 
 						<Route path="/about" element={<AboutPage />} />
 
-						<Route path="/admin" element={<AdminPage />} />
+						<Route
+							path="/admin"
+							element={
+								<AdminPage
+									isAuthenticated={isAuthenticated}
+									setIsAuthenticated={setIsAuthenticated}
+								/>
+							}
+						/>
 
 						<Route path="*" element={<NotFoundPage />} />
 					</Routes>

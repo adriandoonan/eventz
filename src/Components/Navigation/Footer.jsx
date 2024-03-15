@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { makeToast } from "../../App";
 
 const Footer = () => {
 	return (
@@ -17,11 +16,6 @@ const Footer = () => {
 					</li>
 					<li>
 						<Link to="/impressum">Impressum</Link>
-					</li>
-					<li>
-						<button type="button" onClick={() => makeToast("foo")}>
-							I'm hungry
-						</button>
 					</li>
 				</ul>
 				<small>
