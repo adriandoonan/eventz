@@ -36,13 +36,18 @@ html {
 body {
   min-height: 100%;
   background-color: cadetblue;
+  margin: 0;
+  padding: 0;
+
 }
 
 #root {
   max-width: 1280px;
-  height: calc(100% - var(--header-height) - var(--footer-height));
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   background-color: plum;
 }
 
@@ -72,8 +77,8 @@ header {
 
 #main-content {
   height: 100%;
-  display: flex;
-  flex-flow: row;
+  display: grid;
+  grid-template-columns: auto 1fr;
   margin-bottom: 0;
   background-color: blue;
    & aside {
@@ -89,11 +94,34 @@ header {
    }
    main {
     background-image: var(--gradient-18);
-    justify-self: center;
-    width: min(100% - 2rem,50rem);
     
-    margin-inline: auto;
    }
+}
+
+
+.homepage-hero {
+  display:grid;
+  grid-template-areas: "stack";
+  place-items: center;
+
+  > img.homepage-hero-image {
+    grid-area: stack;
+  }
+  > h1.homepage-hero-title {
+    grid-area: stack;
+    background: var(--gradient-3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: var(--size-fluid-8);
+  }
+}
+
+.homepage-content {
+  background-color: var(--blue-3);
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 60rem;
 }
 
 footer {

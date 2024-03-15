@@ -1,5 +1,7 @@
 import "./App.scss";
 import { Routes, Route } from "react-router-dom";
+import axios from "axios";
+
 import HomePage from "./Pages/HomePage";
 import EventsListPage from "./Pages/EventsListPage";
 import EventDetailPage from "./Pages/EventDetailPage";
@@ -14,49 +16,98 @@ import SideBar from "./Components/Navigation/SideBar";
 import AboutPage from "./Pages/AboutPage";
 import EventsCalendarPage from "./Pages/EventsCalendarPage";
 
-import database from './eventz-db.json';
+import localDatabase from "./eventz-db.json";
+import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
+const databasePath = "http://localhost:6969";
+
+export const makeToast = (message = "Here is your toast.", icon = "👏") => {
+	toast(message, {
+		duration: 4000,
+		position: "top-center",
+
+		// Styling
+		style: {},
+		className: "",
+
+		// Custom Icon
+		icon: icon,
+
+		// Change colors of success/error/loading icon
+		iconTheme: {
+			primary: "#000",
+			secondary: "#fff",
+		},
+
+		// Aria
+		ariaProps: {
+			role: "status",
+			"aria-live": "polite",
+		},
+	});
+};
 
 function App() {
-  return (
-    <>
-    <HeaderNav />
+	const [events, setEvents] = useState(null);
 
-      <section id="main-content">
-        
-        <SideBar />
+	const getEvents = async () => {
+		try {
+			const request = await axios.get(`${databasePath}/events`);
+			const response = await request.data;
+			console.log(response);
+			setEvents(response);
+		} catch (error) {
+			console.error("had an error fetching events from database", error);
+		}
+	};
 
-        <main className="">
-          
+	useEffect(() => {
+		getEvents();
+	}, []);
 
-          <Routes>
-            <Route path="/" element={<HomePage events={database.events.slice(0,4)} />} />
+	return (
+		<>
+			<Toaster />
+			<HeaderNav />
 
-            <Route path="/events" element={<EventsListPage />} />
-            
-            <Route path="/events-calendar" element={<EventsCalendarPage />} />
+			<section id="main-content">
+				<SideBar />
 
-            <Route path="/events/:eventSlug" element={<EventDetailPage />} />
+				<main className="">
+					<Routes>
+						<Route path="/" element={<HomePage events={events} />} />
 
-            <Route path="/events/:eventSlug/performers" element={<PerformersListPage />} />
-            
-            <Route path="/events/:eventSlug/performers/:performerId" element={<PerformerDetailPage />} />
+						<Route path="/events" element={<EventsListPage />} />
 
-            <Route path="/events/submit-event" element={<SubmitEventPage />} />
+						<Route path="/events-calendar" element={<EventsCalendarPage />} />
 
-            <Route path="/about" element={<AboutPage />} />
+						<Route path="/events/:eventSlug" element={<EventDetailPage />} />
 
-            <Route path="/admin" element={<AdminPage />} />
+						<Route
+							path="/events/:eventSlug/performers"
+							element={<PerformersListPage />}
+						/>
 
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        
-        </main>
-       
-      </section>
-      <Footer />
-    </>
-  );
+						<Route
+							path="/events/:eventSlug/performers/:performerId"
+							element={<PerformerDetailPage />}
+						/>
+
+						<Route path="/events/submit-event" element={<SubmitEventPage />} />
+
+						<Route path="/about" element={<AboutPage />} />
+
+						<Route path="/admin" element={<AdminPage />} />
+
+						<Route path="*" element={<NotFoundPage />} />
+					</Routes>
+				</main>
+			</section>
+
+			<Footer />
+		</>
+	);
 }
 
 export default App;
