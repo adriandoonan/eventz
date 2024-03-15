@@ -1,0 +1,75 @@
+{
+	"events": [
+		{
+			"id": 1,
+			"slug": "first-event",
+			"name": "my first test event",
+			"startDate": "2024-01-13",
+			"endDate": "2024-01-20",
+			"organisers": 1
+		},
+		{
+			"id": 2,
+			"slug": "second-event",
+			"name": "my second test event",
+			"startDate": "2024-02-13",
+			"endDate": "2024-02-20",
+			"organisers": 1
+		},
+		{
+			"id": 3,
+			"slug": "third-event",
+			"name": "my third test event",
+			"startDate": "2024-03-13",
+			"endDate": "2024-03-20",
+			"organisers": 1
+		},
+		{
+			"id": 4,
+			"slug": "fourth-event",
+			"name": "my fourth test event",
+			"startDate": "2024-04-13",
+			"endDate": "2024-04-20",
+			"organisers": 1
+		},
+		{
+			"id": 5,
+			"slug": "fifth-event",
+			"name": "my fifth test event",
+			"startDate": "2024-05-13",
+			"endDate": "2024-05-20",
+			"organisers": 1
+		}
+	],
+	"performers": [
+		{
+			"id": 1,
+			"name": "johnny performer",
+			"teams": [1, 2]
+		},
+		{
+			"id": 2,
+			"name": "judy performer",
+			"teams": [2]
+		}
+	],
+	"organisers": [
+		{
+			"id": 1,
+			"name": "organising team"
+		},
+		{
+			"id": 2,
+			"name": "disorganising team"
+		}
+	],
+	"users": [
+		{
+			"email": "me@me.com",
+			"password": "$2a$10$SuxqpBDxcu1mOZeOzoGSTeC7zTlm5A/MC/m74dmdWxjB6IF462Ju2",
+			"firstname": "jij",
+			"lastname": "jijington",
+			"id": 1
+		}
+	]
+}

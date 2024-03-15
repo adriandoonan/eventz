@@ -1,0 +1,3 @@
+[submodule "eventz-backend"]
+	path = eventz-backend
+	url = https://github.com/adriandoonan/eventz-backend.git
