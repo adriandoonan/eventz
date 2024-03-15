@@ -1,7 +1,90 @@
-// footer {
-//   height: var(--footer-height);
-//   background-color: aqua;
-// }
+@use "@picocss/pico/scss/pico" with ( // Theme color
+  // amber, azure, blue, cyan, fuchsia, green, grey, indigo, jade, lime, orange, pink, pumpkin, purple, red, sand, slate, violet, yellow, zinc
+  $theme-color: "azure" , 
+
+  // Prefix for CSS variables
+  $css-var-prefix: "--pico-" , // Must start with "--"
+
+  // Define the root element used to target <header>, <main>, <footer>
+  // with $enable-semantic-container and $enable-responsive-spacings
+  $semantic-root-element: "#root" ,
+
+  // Enable <header>, <main>, <footer> inside $semantic-root-element as containers
+  $enable-semantic-container: true ,
+
+  // Enable a centered viewport for <header>, <main>, <footer> inside $semantic-root-element
+  // Fluid layout if disabled
+  $enable-viewport: true ,
+
+  // Enable responsive spacings for <header>, <main>, <footer>, <section>, <article>
+  // Fixed spacings by default
+  $enable-responsive-spacings: false ,
+
+  // Enable responsive typography
+  // Fixed root element size (rem) if disabled
+  $enable-responsive-typography: true ,
+
+  // Enable .classes
+  // .classless version if disabled
+  $enable-classes: false ,
+
+  // Enable transitions
+  $enable-transitions: true ,
+
+  // Enable overriding with !important
+  $enable-important: true ,
+
+  // Optional parent selector
+  // If defined, all HTML tags are wrapped with this selector
+  // :root is not wrapped
+  $parent-selector: "" ,
+ 
+  $modules: ( // Theme
+      "themes/default": true,
+
+      // Layout
+      "layout/document": false,
+      "layout/landmarks": false,
+      "layout/container": false,
+      "layout/section": false,
+      "layout/grid": true,
+      "layout/overflow-auto": true,
+
+      // Content
+      "content/link": false,
+      "content/typography": false,
+      "content/embedded": false,
+      "content/button": false,
+      "content/table": false,
+      "content/code": false,
+      "content/figure": false,
+      "content/miscs": false,
+
+      // Forms
+      "forms/basics": true,
+      "forms/checkbox-radio-switch": true,
+      "forms/input-color": false,
+      "forms/input-date": true,
+      "forms/input-file": false,
+      "forms/input-range": true,
+      "forms/input-search": true,
+
+      // Components
+      "components/accordion": false,
+      "components/card": false,
+      "components/dropdown": false,
+      "components/group": false,
+      "components/loading": false,
+      "components/modal": true,
+      "components/nav": false,
+      "components/progress": false,
+      "components/tooltip": true,
+
+      // Utilities
+      "utilities/accessibility": true,
+      "utilities/reduce-motion": true
+    )
+);
 
 /* Welcome 🎉 */
 /* Use Open-Props from NPM or CDN */
@@ -14,11 +97,12 @@
  open-props normalize isn't required, but makes for a nice base.
  add this to see default styles for <details> and other HTM5 elements
  Bonus: normalize includes light and dark vars for adaptive theming */
- @import 'open-props/normalize';
- /* @import 'https://unpkg.com/open-props/normalize.min.css'; */
- @import 'open-props/buttons';
+@import 'open-props/normalize';
+/* @import 'https://unpkg.com/open-props/normalize.min.css'; */
+@import 'open-props/buttons';
 
 //  @import 'open-props/src/extra/theme.light';
+
 
 
 
@@ -66,11 +150,11 @@ header {
       list-style-type: none;
       padding-left: 0;
     }
-    
+
     ul:nth-child(2) {
       display: flex;
       list-style-type: none;
-      gap:  0.5rem;
+      gap: 0.5rem;
     }
   }
 }
@@ -81,9 +165,11 @@ header {
   grid-template-columns: auto 1fr;
   margin-bottom: 0;
   background-color: blue;
-   & aside {
+
+  & aside {
     background-color: lightcoral;
     display: none;
+
     @media screen and (min-width: 600px) {
       display: block;
     }
@@ -91,23 +177,25 @@ header {
     nav ul {
       list-style-type: none;
     }
-   }
-   main {
+  }
+
+  main {
     background-image: var(--gradient-18);
-    
-   }
+
+  }
 }
 
 
 .homepage-hero {
-  display:grid;
+  display: grid;
   grid-template-areas: "stack";
   place-items: center;
 
-  > img.homepage-hero-image {
+  >img.homepage-hero-image {
     grid-area: stack;
   }
-  > h1.homepage-hero-title {
+
+  >h1.homepage-hero-title {
     grid-area: stack;
     background: var(--gradient-3);
     -webkit-background-clip: text;
@@ -128,26 +216,30 @@ footer {
   height: var(--footer-height);
   background-color: aqua;
   padding: 1rem;
+
   nav {
     display: flex;
     flex-direction: column;
-    justify-content:flex-start;
+    justify-content: flex-start;
+
     ul {
       list-style-type: none;
       display: flex;
       justify-content: space-around;
       margin: auto 0;
       padding: 0;
+
       li:first-child {
         justify-self: flex-start;
       }
     }
+
     small {
-      margin-left: auto ;
+      margin-left: auto;
       margin-right: 4.75rem;
       margin-bottom: 0;
     }
-  } 
+  }
 }
 
 // will need to be updated at some point
@@ -158,4 +250,8 @@ footer {
   padding: 2rem;
   margin: 1rem;
   background: var(--gradient-7)
+}
+
+.form-bad-input {
+  border: 1px red solid;
 }
