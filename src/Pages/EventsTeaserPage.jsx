@@ -3,7 +3,25 @@ import { useEffect, useState } from "react";
 import { databasePath } from "../App";
 import axios from "axios";
 
-const HomePage = () => {
+const EventsTeaserPage = () => {
+	const [events, setEvents] = useState(null);
+
+	const getEvents = async (limit = null) => {
+		try {
+			const params = { _limit: limit };
+			const request = await axios.get(`${databasePath}/events`, { params });
+			const response = await request.data;
+			console.log(response);
+			setEvents(response);
+		} catch (error) {
+			console.error("had an error fetching events from database", error);
+		}
+	};
+
+	useEffect(() => {
+		getEvents(5);
+	}, []);
+
 	return (
 		<section className="homepage">
 			<article className="homepage-hero">
@@ -15,20 +33,10 @@ const HomePage = () => {
 				<h1 className="homepage-hero-title">Eventz!</h1>
 			</article>
 			<div className="homepage-content">
-				<h1>Welcome to Eventz!</h1>
-				<p>
-					The ultimate destination for hosting, discovering, and sharing events!
-					Whether you're planning a gathering or seeking the next big thing to
-					attend, Eventz has you covered.
-				</p>
-
-				<p>
-					With our vast database of events, you can easily browse through a wide
-					array of happenings in your area or beyond. From concerts to
-					conferences, parties to seminars, there's something for everyone.
-				</p>
+				<p>Hey, you like events? Here are some events!</p>
+				{events && <EventsList events={events} />}
 			</div>
 		</section>
 	);
 };
-export default HomePage;
+export default EventsTeaserPage;

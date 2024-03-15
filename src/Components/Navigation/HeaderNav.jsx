@@ -25,15 +25,21 @@ const HeaderNav = ({ isAuthenticated }) => {
 					</li>
 					<li>
 						<button
+							style={{ display: "none" }}
 							type="button"
 							onClick={() => console.log(Cookies.set("foo", "bar"))}
 						>
 							set cookie
 						</button>
-						<button type="button" onClick={() => console.log(Cookies.get())}>
+						<button
+							style={{ display: "none" }}
+							type="button"
+							onClick={() => console.log(Cookies.get())}
+						>
 							get cookie
 						</button>
 						<button
+							style={{ display: "none" }}
 							type="button"
 							onClick={() => console.log(Cookies.remove("jwtToken"))}
 						>
