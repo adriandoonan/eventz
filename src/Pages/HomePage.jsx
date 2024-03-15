@@ -1,6 +1,26 @@
 import EventsList from "../Components/Events/EventsList";
+import { useEffect, useState } from "react";
+import { databasePath } from "../App";
+import axios from "axios";
 
-const HomePage = ({ events }) => {
+const HomePage = () => {
+	const [events, setEvents] = useState(null);
+
+	const getEvents = async () => {
+		try {
+			const request = await axios.get(`${databasePath}/events`);
+			const response = await request.data;
+			console.log(response);
+			setEvents(response);
+		} catch (error) {
+			console.error("had an error fetching events from database", error);
+		}
+	};
+
+	useEffect(() => {
+		getEvents();
+	}, []);
+
 	return (
 		<section className="homepage">
 			<article className="homepage-hero">

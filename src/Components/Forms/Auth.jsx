@@ -10,7 +10,7 @@ const setCookie = (key, value, options) => {
 	Cookies.set(key, value, options);
 };
 
-const Auth = ({ isOpen, isAuthenticated, setIsAuthenticated }) => {
+const Auth = ({ needsAuth, isAuthenticated, setIsAuthenticated }) => {
 	const [requestAuth, setRequestAuth] = useState(true);
 	const [userDetails, setUserDetails] = useState({
 		email: "",
@@ -20,10 +20,12 @@ const Auth = ({ isOpen, isAuthenticated, setIsAuthenticated }) => {
 	const [badPassword, setBadPassword] = useState(false);
 
 	const handleLogin = async (event) => {
+		event.preventDefault();
+
 		if (isAuthenticated) {
 			return;
 		}
-		event.preventDefault();
+
 		setBadPassword(false);
 		setBadUsername(false);
 		try {
@@ -85,7 +87,7 @@ const Auth = ({ isOpen, isAuthenticated, setIsAuthenticated }) => {
 	};
 
 	return (
-		<dialog id="login-dialog" open={requestAuth}>
+		<dialog id="login-dialog" open={needsAuth}>
 			<LoginForm
 				userDetails={userDetails}
 				setUserDetails={setUserDetails}

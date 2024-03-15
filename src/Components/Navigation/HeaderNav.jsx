@@ -33,6 +33,12 @@ const HeaderNav = ({ isAuthenticated }) => {
 						<button type="button" onClick={() => console.log(Cookies.get())}>
 							get cookie
 						</button>
+						<button
+							type="button"
+							onClick={() => console.log(Cookies.remove("jwtToken"))}
+						>
+							clear cookie
+						</button>
 					</li>
 				</ul>
 			</nav>

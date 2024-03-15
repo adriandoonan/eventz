@@ -50,23 +50,8 @@ export const makeToast = (message = "Here is your toast.", icon = "👏") => {
 };
 
 function App() {
-	const [events, setEvents] = useState(null);
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-	const getEvents = async () => {
-		try {
-			const request = await axios.get(`${databasePath}/events`);
-			const response = await request.data;
-			console.log(response);
-			setEvents(response);
-		} catch (error) {
-			console.error("had an error fetching events from database", error);
-		}
-	};
-
-	useEffect(() => {
-		getEvents();
-	}, []);
+	const [needsAuth, setNeedsAuth] = useState(false);
 
 	return (
 		<>
@@ -78,7 +63,7 @@ function App() {
 
 				<main className="">
 					<Routes>
-						<Route path="/" element={<HomePage events={events} />} />
+						<Route path="/" element={<HomePage />} />
 
 						<Route path="/events" element={<EventsListPage />} />
 
@@ -106,6 +91,8 @@ function App() {
 								<AdminPage
 									isAuthenticated={isAuthenticated}
 									setIsAuthenticated={setIsAuthenticated}
+									needsAuth={needsAuth}
+									setNeedsAuth={setNeedsAuth}
 								/>
 							}
 						/>
