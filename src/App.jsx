@@ -20,6 +20,7 @@ import EventsCalendarPage from "./Pages/EventsCalendarPage";
 import localDatabase from "./eventz-db.json";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import EventsTeaserPage from "./Pages/EventsTeaserPage";
 
 export const databasePath = "http://localhost:6969";
 
@@ -64,6 +65,8 @@ function App() {
 				<main className="">
 					<Routes>
 						<Route path="/" element={<HomePage />} />
+
+						<Route path="/events-teaser" element={<EventsTeaserPage />} />
 
 						<Route path="/events" element={<EventsListPage />} />
 
