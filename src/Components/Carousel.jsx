@@ -12,7 +12,6 @@ const Carousel = ({ images }) => {
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			console.log(window.innerWidth);
 			if (window.innerWidth < 1400) {
 				updateIndex(activeIndex + 1);
 			}
