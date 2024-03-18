@@ -13,7 +13,6 @@ import SubmitEventPage from "./Pages/SubmitEventPage";
 import NotFoundPage from "./Pages/NotFoundPage";
 import HeaderNav from "./Components/Navigation/HeaderNav";
 import Footer from "./Components/Navigation/Footer";
-import SideBar from "./Components/Navigation/SideBar";
 import AboutPage from "./Pages/AboutPage";
 import EventsCalendarPage from "./Pages/EventsCalendarPage";
 
@@ -60,8 +59,6 @@ function App() {
 			<HeaderNav isAuthenticated={isAuthenticated} />
 
 			<section id="main-content">
-				<SideBar />
-
 				<main className="">
 					<Routes>
 						<Route path="/" element={<HomePage />} />

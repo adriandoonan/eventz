@@ -94,56 +94,61 @@ const SubmitEventForm = () => {
 				type="text"
 				value={state.name}
 				name="name"
-				placeholder="The name of your event"
+				placeholder="My awesome event..."
 				required
 				onChange={(event) => dispatch({ type: "input_name", payload: event })}
 			/>
+			<small>The name of your event</small>
 
 			<label>Description:</label>
 			<input
 				type="text"
 				value={state.description}
 				name="description"
-				placeholder="A pithy description of your event"
+				placeholder="This event is really going to be something ..."
 				required
 				onChange={(event) =>
 					dispatch({ type: "input_description", payload: event })
 				}
 			/>
+			<small>A pithy description</small>
 
 			<label>Promo image:</label>
 			<input
 				type="url"
 				value={state.promoImage}
 				name="promoImage"
-				placeholder="URL of an eye-catching image"
+				placeholder="https://images.com/sweet-image.bmp"
 				required
 				onChange={(event) =>
 					dispatch({ type: "input_promo_image", payload: event })
 				}
 			/>
+			<small>URL of an eye-catching image</small>
 
 			<label>Location:</label>
 			<input
 				type="text"
 				value={state.location}
 				name="location"
-				placeholder="Where your event will take place"
+				placeholder="Berlin, Germany"
 				required
 				onChange={(event) =>
 					dispatch({ type: "input_location", payload: event })
 				}
 			/>
+			<small>Where your event will take place</small>
 
 			<label>Venue:</label>
 			<input
 				type="text"
 				value={state.venue}
 				name="venue"
-				placeholder="The event venue"
+				placeholder="Festsaal Kreuzberg"
 				required
 				onChange={(event) => dispatch({ type: "input_venue", payload: event })}
 			/>
+			<small>The event venue</small>
 
 			<label>Start:</label>
 			<input
@@ -155,6 +160,7 @@ const SubmitEventForm = () => {
 					dispatch({ type: "input_start_date", payload: event })
 				}
 			/>
+			<small>When does your event start?</small>
 
 			<label>End:</label>
 			<input
@@ -166,18 +172,20 @@ const SubmitEventForm = () => {
 					dispatch({ type: "input_end_date", payload: event })
 				}
 			/>
+			<small>When does your event end?</small>
 
 			<label>Organiser:</label>
 			<input
 				type="text"
 				value={state.organiser}
 				name="organiser"
-				placeholder="The official event organiser"
+				placeholder="The Event People"
 				required
 				onChange={(event) =>
 					dispatch({ type: "input_organiser", payload: event })
 				}
 			/>
+			<small>The official event organiser</small>
 
 			<label>Tags:</label>
 			<input
@@ -187,6 +195,7 @@ const SubmitEventForm = () => {
 				required
 				onChange={(event) => dispatch({ type: "input_tags", payload: event })}
 			/>
+			<small>Select tags matching your event</small>
 
 			<label>Other images:</label>
 			<input
@@ -198,6 +207,7 @@ const SubmitEventForm = () => {
 					dispatch({ type: "input_other_images", payload: event })
 				}
 			/>
+			<small>We'll use any other images in the event details page</small>
 
 			<button type="submit">Submit Event</button>
 			<button
