@@ -12,7 +12,10 @@ const Carousel = ({ images }) => {
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			updateIndex(activeIndex + 1);
+			console.log(window.innerWidth);
+			if (window.innerWidth < 1400) {
+				updateIndex(activeIndex + 1);
+			}
 		}, 2000);
 		return () => {
 			if (interval) {
@@ -25,7 +28,7 @@ const Carousel = ({ images }) => {
 		<div className="carousel">
 			<div
 				className="inner"
-				style={{ transform: `translateX(-${activeIndex * 160}%)` }}
+				style={{ transform: `translateX(-${activeIndex * 200}%)` }}
 			>
 				{images.map((image, index) => {
 					return (
