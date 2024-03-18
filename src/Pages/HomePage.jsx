@@ -2,19 +2,26 @@ import EventsList from "../Components/Events/EventsList";
 import { useEffect, useState } from "react";
 import { databasePath } from "../App";
 import axios from "axios";
+import Carousel from "../Components/Carousel";
 
 const HomePage = () => {
+	const images = [
+		"/src/assets/conference.avif",
+		"/src/assets/fair.avif",
+		"/src/assets/theatre.avif",
+	];
 	return (
 		<section className="homepage">
 			<article className="homepage-hero">
 				<img
 					className="homepage-hero-image"
-					src="https://images.unsplash.com/photo-1549451371-64aa98a6f660?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					src="/src/assets/demo-image-hero.jpeg"
 					alt="Just one of our great Eventz!"
 				/>
 				<h1 className="homepage-hero-title">Eventz!</h1>
 			</article>
 			<div className="homepage-content">
+				<Carousel images={images} />
 				<h1>Welcome to Eventz!</h1>
 				<p>
 					The ultimate destination for hosting, discovering, and sharing events!
