@@ -84,7 +84,7 @@ function App() {
 							element={<PerformerDetailPage />}
 						/>
 
-						<Route path="/events/submit-event" element={<SubmitEventPage />} />
+						<Route path="/submit-event" element={<SubmitEventPage />} />
 
 						<Route path="/about" element={<AboutPage />} />
 
