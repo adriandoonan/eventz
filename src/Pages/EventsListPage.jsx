@@ -44,6 +44,7 @@ const EventsListPage = () => {
 		if (page < 1) {
 			return;
 		}
+		const goodPageSize = window.innerWidth > 700 ? 15 : 5;
 
 		const getEvents = async (limit = null, page = null, events = []) => {
 			try {
@@ -63,7 +64,7 @@ const EventsListPage = () => {
 				console.error("had an error fetching events from database", error);
 			}
 		};
-		getEvents(5, page, events);
+		getEvents(goodPageSize, page, events);
 	}, [page]);
 
 	return (
