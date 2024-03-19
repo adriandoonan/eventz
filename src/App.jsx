@@ -21,7 +21,9 @@ import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import EventsTeaserPage from "./Pages/EventsTeaserPage";
 
-export const databasePath = "http://localhost:6969";
+/** @type {string}  the database path*/
+export const DATABASE_PATH =
+	import.meta.env.VITE_APP_URL || "http://localhost:6969";
 
 export const makeToast = (message = "Here is your toast.", icon = "👏") => {
 	toast(message, {
@@ -47,6 +49,29 @@ export const makeToast = (message = "Here is your toast.", icon = "👏") => {
 			"aria-live": "polite",
 		},
 	});
+};
+
+export const dateToNormal = (date) => {
+	const dayAndDateOptions = {
+		weekday: "long",
+		year: "numeric",
+		month: "long",
+		day: "numeric",
+	};
+	const timeAndTimeZoneOptions = {
+		hour: "numeric",
+		minute: "2-digit",
+		timeZoneName: "shortGeneric",
+	};
+
+	const myDate = new Date(date);
+
+	const dayAndDate = myDate.toLocaleDateString("en-UK", dayAndDateOptions);
+	const timeAndTimeZone = myDate.toLocaleTimeString(
+		"en-US",
+		timeAndTimeZoneOptions,
+	);
+	return { dayAndDate, timeAndTimeZone };
 };
 
 function App() {

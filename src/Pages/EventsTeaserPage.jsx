@@ -1,6 +1,6 @@
 import EventsList from "../Components/Events/EventsList";
 import { useEffect, useState } from "react";
-import { databasePath } from "../App";
+import { DATABASE_PATH } from "../App";
 import axios from "axios";
 
 const EventsTeaserPage = () => {
@@ -9,7 +9,7 @@ const EventsTeaserPage = () => {
 	const getEvents = async (limit = null) => {
 		try {
 			const params = { _limit: limit };
-			const request = await axios.get(`${databasePath}/events`, { params });
+			const request = await axios.get(`${DATABASE_PATH}/events`, { params });
 			const response = await request.data;
 			console.log(response);
 			setEvents(response);

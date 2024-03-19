@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
-import { databasePath } from "../../App";
+import { DATABASE_PATH } from "../../App";
 import { makeToast } from "../../App";
 import { LoginForm } from "./LoginForm";
 
@@ -31,7 +31,7 @@ const Auth = ({ needsAuth, isAuthenticated, setIsAuthenticated }) => {
 		try {
 			const requestBody = JSON.stringify(userDetails);
 			//console.log("going to send", requestBody);
-			const request = await axios.post(`${databasePath}/login`, requestBody, {
+			const request = await axios.post(`${DATABASE_PATH}/login`, requestBody, {
 				headers: {
 					"Content-Type": "application/json",
 				},

@@ -1,27 +1,22 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const EventTile = ({ event }) => {
-	const { id, name, startDate, endDate, organisers, slug } = event;
-	console.log("event props", id);
-	const navigate = useNavigate();
-	return (
+	const { id, name, slug, promoImage } = event;
+	//console.log("event props", id);
+
+	return id >= 0 ? (
 		<article className="event-tile">
-			<h2>{name}</h2>
-			<p>
-				This event runs from {startDate} until {endDate} and is organised by{" "}
-				{organisers}
-			</p>
-			<button
-				className="event-tile-more-info-button"
-				type="button"
-				onClick={() => {
-					console.log(id);
-					navigate(`/events/${slug}`);
-				}}
-			>
-				More information
-			</button>
-			<img src={event.promoImage} alt={name} />
+			<Link to={`/events/${slug}`} className="event-tile-clickable">
+				<img src={promoImage} alt={name} />
+				<h2>{name}</h2>
+			</Link>
+		</article>
+	) : (
+		<article className="event-tile placeholder" id={`placeholder-${id}`}>
+			<a href="#" className="event-tile-non-clickable">
+				<img src={promoImage} alt="placeholder event" />
+				<h2>placeholder</h2>
+			</a>
 		</article>
 	);
 };

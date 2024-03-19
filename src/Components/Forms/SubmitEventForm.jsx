@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 import axios from "axios";
-import { databasePath } from "../../App";
+import { DATABASE_PATH } from "../../App";
 import { makeToast } from "../../App";
 import Select from "react-select";
 
@@ -15,7 +15,7 @@ const emptyForm = {
 	startDate: "", //new Date().toISOString().slice(0, -8),
 	endDate: "", //new Date().toISOString().slice(0, -8),
 	organiser: "",
-	tags: [], // we would need to provide a list of possible tags
+	tags: null, // we would need to provide a list of possible tags
 	promoImage: "",
 	images: [
 		{
@@ -51,7 +51,7 @@ const submitToDB = async (event, state) => {
 	event.preventDefault();
 	//console.log(event);
 	try {
-		const request = await axios.post(`${databasePath}/events`, {
+		const request = await axios.post(`${DATABASE_PATH}/events`, {
 			...state,
 			pendingApproval: true,
 			slug: state.name.trim().toLowerCase().replaceAll(" ", "-"),
@@ -208,6 +208,7 @@ const SubmitEventForm = () => {
 				options={tags}
 				isMulti={true}
 				form="submit-event-form"
+				value={state.tags}
 				onChange={(event) => dispatch({ type: "input_tags", payload: event })}
 			/>
 			<small
