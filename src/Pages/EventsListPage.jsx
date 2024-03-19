@@ -3,6 +3,7 @@ import EventsList from "../Components/Events/EventsList";
 import { useEffect, useState } from "react";
 import { DATABASE_PATH } from "../App";
 import axios from "axios";
+import EventTile from "../Components/Events/EventTile";
 
 const placeholder = [
 	{ id: -1, promoImage: "/assets/placeholder.webp" },
@@ -11,6 +12,14 @@ const placeholder = [
 	{ id: -4, promoImage: "/assets/placeholder.webp" },
 	{ id: -5, promoImage: "/assets/placeholder.webp" },
 ];
+
+const yourOwnEvent = {
+	id: 4206942069420,
+	name: "Your next event",
+	slug: "submit-event",
+	promoImage: "/assets/your-event.webp",
+	featured: true,
+};
 
 const EventsListPage = () => {
 	const [events, setEvents] = useState([]);
@@ -46,25 +55,39 @@ const EventsListPage = () => {
 		}
 		const goodPageSize = window.innerWidth > 700 ? 15 : 5;
 
-		const getEvents = async (limit = null, page = null, events = []) => {
+		const CancelToken = axios.CancelToken;
+		const source = CancelToken.source();
+
+		const getEvents = async (limit = null, page = null) => {
 			try {
-				const params = { _limit: limit, _page: page };
+				const params = {
+					_limit: limit,
+					_page: page,
+					cancelToken: source.token,
+				};
 				const request = await axios.get(`${DATABASE_PATH}/events`, { params });
 				const response = await request.data;
 
-				console.log("response", response);
+				//console.log("response", response);
 				if (response.length === 0) {
-					console.log("now we would be out of events");
+					//console.log("now we would be out of events");
 					setOutOfEvents(true);
 					return;
 				}
 				setEvents((prevEvents) => [...prevEvents, ...response]);
 				return response;
 			} catch (error) {
-				console.error("had an error fetching events from database", error);
+				if (axios.isCancel(err)) {
+					console.log("successfully aborted");
+				} else {
+					console.error("had an error fetching events from database", error);
+				}
 			}
 		};
-		getEvents(goodPageSize, page, events);
+		getEvents(goodPageSize, page);
+		return () => {
+			source.cancel();
+		};
 	}, [page]);
 
 	return (
@@ -72,7 +95,11 @@ const EventsListPage = () => {
 			{/* <SideBar /> */}
 
 			{events.length > 0 && <EventsList events={events} />}
-			{!outOfEvents && <EventsList events={placeholder} />}
+			{!outOfEvents ? (
+				<EventsList events={placeholder} />
+			) : (
+				<EventTile event={yourOwnEvent} />
+			)}
 		</div>
 	);
 };
