@@ -2,16 +2,16 @@ import Carousel from "../Components/Carousel";
 
 const HomePage = () => {
 	const images = [
-		"/src/assets/conference.avif",
-		"/src/assets/fair.avif",
-		"/src/assets/theatre.avif",
+		"/assets/conference.avif",
+		"/assets/fair.avif",
+		"/assets/theatre.avif",
 	];
 	return (
 		<>
 			<article className="homepage-hero">
 				<img
 					className="homepage-hero-image"
-					src="/src/assets/demo-image-hero.jpeg"
+					src="/assets/demo-image-hero.jpeg"
 					alt="Just one of our great Eventz!"
 				/>
 				<h1 className="homepage-hero-title">Eventz!</h1>
