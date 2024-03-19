@@ -2,7 +2,7 @@ import Auth from "../Components/Forms/Auth";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
-import { databasePath } from "../App";
+import { DATABASE_PATH } from "../App";
 import { useEffect, useState } from "react";
 
 const AdminPage = ({
@@ -14,7 +14,7 @@ const AdminPage = ({
 	const [users, setUsers] = useState(null);
 
 	const getUsers = async () => {
-		const request = await axios.get(`${databasePath}/users`, {
+		const request = await axios.get(`${DATABASE_PATH}/users`, {
 			headers: {
 				Authorization: `Bearer ${Cookies.get("jwtToken")}`,
 			},

@@ -128,30 +128,7 @@
   --eventz-black: #252521;
 }
 
-// // light color scheme
-// :root:not([data-theme=dark]) {
-//   --pico-background-color: var(--eventz-off-white);
-//   --pico-text-color: var(--eventz-black);
-// }
-
-// // Dark color scheme (Auto) 
-// // Automatically enabled if user has Dark mode enabled 
-// @media only screen and (prefers-color-scheme: dark) {
-//   :root:not([data-theme]) {
-//     --pico-background-color:  var(--eventz-grey-dark);
-//     --pico-text-color: var(--eventz-grey-ultralight);
-//   }
-// }
-
-// // Dark color scheme (Forced)
-// // Enabled if forced with data-theme="dark"
-// [data-theme="dark"] {
-//   --pico-background-color:  var(--eventz-grey-dark);
-//   --pico-text-color: var(--eventz-grey-ultralight);
-// }
-
-
-/* Orange color for light color scheme (Default) */
+/* Variables for light color scheme (Default) */
 /* Can be forced with data-theme="light" */
 [data-theme=light],
 :root:not([data-theme=dark]) {
@@ -168,7 +145,7 @@
   --eventz-primary-inverse: #fff;
 }
 
-/* Orange color for dark color scheme (Auto) */
+/* Variables for dark color scheme (Auto) */
 /* Automatically enabled if user has Dark mode enabled */
 @media only screen and (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
@@ -185,7 +162,8 @@
     --eventz-primary-inverse: #fff;
   }
 }
-/* Orange color for dark color scheme (Forced) */
+/* Variables for dark color scheme (Forced) */
+/* Should match the settings above */
 /* Enabled if forced with data-theme="dark" */
 [data-theme=dark] {
   --eventz-background-color: var(--eventz-grey-dark);
@@ -383,16 +361,6 @@ footer {
   }
 }
 
-// will need to be updated at some point
-
-.event-tile {
-  border-radius: var(--radius-conditional-3);
-  border: var(--border-size-1) solid var(--gray-1);
-  padding: 2rem;
-  margin: 1rem;
-  background: var(--gradient-7)
-}
-
 
 // Carousel
 
@@ -507,12 +475,15 @@ footer {
     font-family: Praetorian;
   }
 
-  > .event-detail-hero {
+  > .event-details-hero {
     display: grid;
 
     > img {
-      aspect-ratio: 5 / 2;
-      object-fit: cover;
+      @media screen and (width > 1000px) {
+        aspect-ratio: 5 / 2;
+        object-fit: cover;
+      }
+
     }
     
     > h2 {
@@ -533,6 +504,51 @@ footer {
       padding: 0.3rem 0.5rem;
       border-radius: 4px;
     }
+  }
+  .event-details-page-times {
+    font-size: var(--font-size-fluid-0);
+  }
+}
 
+// event tile
+.events-list-page {
+  padding: 1rem;
+  display: grid;
+
+  @media screen and (width > 700px) {
+    grid-template-columns:  minmax(200px,1fr) minmax(200px,1fr) minmax(200px,1fr);
+    gap: 0.25rem;
+  }
+
+  > .event-tile {
+    
+    &.placeholder {
+      > a {
+        filter: blur(2px);
+        > h2 {
+          background-color: var(--eventz-grey-dark);
+          color: var(--eventz-black);
+          filter: blur(4px);
+        }
+      }
+    }
+   
+    > a {
+      display: grid;
+      > img {
+        width: 100%;
+      }
+      > h2 {
+        text-align: center;
+        font-family: "Praetorian";
+        max-inline-size: 100%;
+        font-size: var(--font-size-fluid-2);
+        color: var(--eventz-near-white);
+        background-color: var(--event-deep-purple);
+          @media screen and (width > 700px) {
+            font-size: var(--font-size-fluid-0);
+          }
+      }
+    }
   }
 }

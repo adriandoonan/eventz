@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 import axios from "axios";
-import { databasePath } from "../../App";
+import { DATABASE_PATH } from "../../App";
 import { makeToast } from "../../App";
 import Select from "react-select";
 
@@ -51,7 +51,7 @@ const submitToDB = async (event, state) => {
 	event.preventDefault();
 	//console.log(event);
 	try {
-		const request = await axios.post(`${databasePath}/events`, {
+		const request = await axios.post(`${DATABASE_PATH}/events`, {
 			...state,
 			pendingApproval: true,
 			slug: state.name.trim().toLowerCase().replaceAll(" ", "-"),
