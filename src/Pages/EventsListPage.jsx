@@ -3,6 +3,7 @@ import EventsList from "../Components/Events/EventsList";
 import { useEffect, useState } from "react";
 import { DATABASE_PATH } from "../App";
 import axios from "axios";
+import EventTile from "../Components/Events/EventTile";
 
 const placeholder = [
 	{ id: -1, promoImage: "/assets/placeholder.webp" },
@@ -11,6 +12,14 @@ const placeholder = [
 	{ id: -4, promoImage: "/assets/placeholder.webp" },
 	{ id: -5, promoImage: "/assets/placeholder.webp" },
 ];
+
+const yourOwnEvent = {
+	id: 4206942069420,
+	name: "Your next event",
+	slug: "submit-event",
+	promoImage: "/assets/your-event.webp",
+	featured: true,
+};
 
 const EventsListPage = () => {
 	const [events, setEvents] = useState([]);
@@ -59,9 +68,9 @@ const EventsListPage = () => {
 				const request = await axios.get(`${DATABASE_PATH}/events`, { params });
 				const response = await request.data;
 
-				console.log("response", response);
+				//console.log("response", response);
 				if (response.length === 0) {
-					console.log("now we would be out of events");
+					//console.log("now we would be out of events");
 					setOutOfEvents(true);
 					return;
 				}
@@ -86,7 +95,11 @@ const EventsListPage = () => {
 			{/* <SideBar /> */}
 
 			{events.length > 0 && <EventsList events={events} />}
-			{!outOfEvents && <EventsList events={placeholder} />}
+			{!outOfEvents ? (
+				<EventsList events={placeholder} />
+			) : (
+				<EventTile event={yourOwnEvent} />
+			)}
 		</div>
 	);
 };

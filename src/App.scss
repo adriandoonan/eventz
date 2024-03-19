@@ -514,6 +514,7 @@ footer {
 .events-list-page {
   padding: 1rem;
   display: grid;
+  gap: 1rem;
 
   @media screen and (width > 700px) {
     grid-template-columns:  minmax(200px,1fr) minmax(200px,1fr) minmax(200px,1fr);
@@ -529,8 +530,9 @@ footer {
          > a {
            > img {
             aspect-ratio: 13 / 18;
-            object-fit: cover;
+           
             max-height: 355px;
+            min-height: 355px;
            }
            > h2 {
             font-size: var(--size-fluid-3);
@@ -542,8 +544,9 @@ footer {
         > a {
           > img {
             aspect-ratio: 3/1;
-            object-fit: cover;
+            
             max-width: 530px;
+            min-width: 530px;
           }
           > h2 {
             font-size: var(--size-fluid-3);
@@ -570,6 +573,9 @@ footer {
       grid-template-areas: "stack";
       > img {
         width: 100%;
+        object-fit: cover;
+        max-height: 175px;
+        min-height: 175px;
         grid-area: stack;
       }
       > h2 {
