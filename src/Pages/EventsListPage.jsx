@@ -5,11 +5,11 @@ import { DATABASE_PATH } from "../App";
 import axios from "axios";
 
 const placeholder = [
-	{ id: -1, promoImage: "/src/assets/placeholder.webp" },
-	{ id: -2, promoImage: "/src/assets/placeholder.webp" },
-	{ id: -3, promoImage: "/src/assets/placeholder.webp" },
-	{ id: -4, promoImage: "/src/assets/placeholder.webp" },
-	{ id: -5, promoImage: "/src/assets/placeholder.webp" },
+	{ id: -1, promoImage: "/assets/placeholder.webp" },
+	{ id: -2, promoImage: "/assets/placeholder.webp" },
+	{ id: -3, promoImage: "/assets/placeholder.webp" },
+	{ id: -4, promoImage: "/assets/placeholder.webp" },
+	{ id: -5, promoImage: "/assets/placeholder.webp" },
 ];
 
 const EventsListPage = () => {
