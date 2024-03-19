@@ -15,7 +15,7 @@ const emptyForm = {
 	startDate: "", //new Date().toISOString().slice(0, -8),
 	endDate: "", //new Date().toISOString().slice(0, -8),
 	organiser: "",
-	tags: [], // we would need to provide a list of possible tags
+	tags: null, // we would need to provide a list of possible tags
 	promoImage: "",
 	images: [
 		{
@@ -208,6 +208,7 @@ const SubmitEventForm = () => {
 				options={tags}
 				isMulti={true}
 				form="submit-event-form"
+				value={state.tags}
 				onChange={(event) => dispatch({ type: "input_tags", payload: event })}
 			/>
 			<small
