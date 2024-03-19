@@ -7,7 +7,7 @@ const HomePage = () => {
 		"/src/assets/theatre.avif",
 	];
 	return (
-		<section className="homepage">
+		<>
 			<article className="homepage-hero">
 				<img
 					className="homepage-hero-image"
@@ -16,9 +16,9 @@ const HomePage = () => {
 				/>
 				<h1 className="homepage-hero-title">Eventz!</h1>
 			</article>
-			<div className="homepage-content">
-				<Carousel images={images} />
+			<Carousel images={images} />
 
+			<div className="homepage-content container-fluid">
 				<h1>Welcome to Eventz!</h1>
 
 				<p>
@@ -62,7 +62,7 @@ const HomePage = () => {
 					possibilities are endless.
 				</p>
 			</div>
-		</section>
+		</>
 	);
 };
 export default HomePage;

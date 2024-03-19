@@ -3,7 +3,7 @@
   $theme-color: "zinc" , 
 
   // Prefix for CSS variables
-  $css-var-prefix: "--pico-" , // Must start with "--"
+  $css-var-prefix: "--eventz-" , // Must start with "--"
 
   // Define the root element used to target <header>, <main>, <footer>
   // with $enable-semantic-container and $enable-responsive-spacings
@@ -26,7 +26,7 @@
 
   // Enable .classes
   // .classless version if disabled
-  $enable-classes: false ,
+  $enable-classes: true ,
 
   // Enable transitions
   $enable-transitions: true ,
@@ -45,7 +45,7 @@
       // Layout
       "layout/document": false,
       "layout/landmarks": false,
-      "layout/container": false,
+      "layout/container": true,
       "layout/section": false,
       "layout/grid": true,
       "layout/overflow-auto": true,
@@ -145,47 +145,47 @@
 /* Can be forced with data-theme="light" */
 [data-theme=light],
 :root:not([data-theme=dark]) {
-  --pico-background-color: var(--eventz-off-white);
-  --pico-color: var(--eventz-black);
-  --pico-text-selection-color: rgba(244, 93, 44, 0.25);
-  --pico-primary: #bd3c13;
-  --pico-primary-background: #d24317;
-  --pico-primary-underline: rgba(189, 60, 19, 0.5);
-  --pico-primary-hover: #942d0d;
-  --pico-primary-hover-background: #bd3c13;
-  --pico-primary-focus: rgba(244, 93, 44, 0.5);
-  --pico-primary-inverse: #fff;
+  --eventz-background-color: var(--eventz-off-white);
+  --eventz-color: var(--eventz-black);
+  --eventz-text-selection-color: rgba(244, 93, 44, 0.25);
+  --eventz-primary: #bd3c13;
+  --eventz-primary-background: #d24317;
+  --eventz-primary-underline: rgba(189, 60, 19, 0.5);
+  --eventz-primary-hover: #942d0d;
+  --eventz-primary-hover-background: #bd3c13;
+  --eventz-primary-focus: rgba(244, 93, 44, 0.5);
+  --eventz-primary-inverse: #fff;
 }
 
 /* Orange color for dark color scheme (Auto) */
 /* Automatically enabled if user has Dark mode enabled */
 @media only screen and (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
-    --pico-background-color: var(--eventz-grey-dark);
-    --pico-color: var(--eventz-grey-ultralight);
-    --pico-text-selection-color: rgba(245, 107, 61, 0.1875);
-    --pico-primary: #f56b3d;
-    --pico-primary-background: #d24317;
-    --pico-primary-underline: rgba(245, 107, 61, 0.5);
-    --pico-primary-hover: #f8a283;
-    --pico-primary-hover-background: #e74b1a;
-    --pico-primary-focus: rgba(245, 107, 61, 0.375);
-    --pico-primary-inverse: #fff;
+    --eventz-background-color: var(--eventz-grey-dark);
+    --eventz-color: var(--eventz-grey-ultralight);
+    --eventz-text-selection-color: rgba(245, 107, 61, 0.1875);
+    --eventz-primary: #f56b3d;
+    --eventz-primary-background: #d24317;
+    --eventz-primary-underline: rgba(245, 107, 61, 0.5);
+    --eventz-primary-hover: #f8a283;
+    --eventz-primary-hover-background: #e74b1a;
+    --eventz-primary-focus: rgba(245, 107, 61, 0.375);
+    --eventz-primary-inverse: #fff;
   }
 }
 /* Orange color for dark color scheme (Forced) */
 /* Enabled if forced with data-theme="dark" */
 [data-theme=dark] {
-  --pico-background-color: var(--eventz-grey-dark);
-  --pico-color: var(--eventz-grey-ultralight);
-  --pico-text-selection-color: rgba(245, 107, 61, 0.1875);
-  --pico-primary: #f56b3d;
-  --pico-primary-background: #d24317;
-  --pico-primary-underline: rgba(245, 107, 61, 0.5);
-  --pico-primary-hover: #f8a283;
-  --pico-primary-hover-background: #e74b1a;
-  --pico-primary-focus: rgba(245, 107, 61, 0.375);
-  --pico-primary-inverse: #fff;
+  --eventz-background-color: var(--eventz-grey-dark);
+  --eventz-color: var(--eventz-grey-ultralight);
+  --eventz-text-selection-color: rgba(245, 107, 61, 0.1875);
+  --eventz-primary: #f56b3d;
+  --eventz-primary-background: #d24317;
+  --eventz-primary-underline: rgba(245, 107, 61, 0.5);
+  --eventz-primary-hover: #f8a283;
+  --eventz-primary-hover-background: #e74b1a;
+  --eventz-primary-focus: rgba(245, 107, 61, 0.375);
+  --eventz-primary-inverse: #fff;
 }
 
 html {
@@ -198,7 +198,7 @@ body {
   min-height: 100%;
   margin: 0;
   padding: 0;
-  background-color: var(--pico-background-color);
+  background-color: var(--eventz-background-color);
 }
 
 #root {
@@ -285,6 +285,11 @@ header {
 
   >img.homepage-hero-image {
     grid-area: stack;
+    
+    object-fit: cover;
+    @media screen and (width > 1000px) {
+      aspect-ratio: 5/2;
+    }
   }
 
   >h1.homepage-hero-title {
@@ -309,11 +314,13 @@ header {
   h1 {
     font-size: var(--font-size-6);
     padding: 4rem 0 2rem 0;
+    margin: 0 auto;
 
   }
   p {
     padding: 2rem;
     text-align: left;
+    margin: 0 auto;
   }
 }
 
@@ -411,4 +418,13 @@ footer {
   width: 100%;
   height: 100%;
   border-radius: 1rem;
+}
+
+// form
+
+.submit-event-form {
+  margin: 0 auto;
+  form {
+    margin: 0 auto;
+  }
 }
