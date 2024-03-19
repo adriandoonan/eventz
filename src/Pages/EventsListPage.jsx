@@ -46,9 +46,16 @@ const EventsListPage = () => {
 		}
 		const goodPageSize = window.innerWidth > 700 ? 15 : 5;
 
-		const getEvents = async (limit = null, page = null, events = []) => {
+		const CancelToken = axios.CancelToken;
+		const source = CancelToken.source();
+
+		const getEvents = async (limit = null, page = null) => {
 			try {
-				const params = { _limit: limit, _page: page };
+				const params = {
+					_limit: limit,
+					_page: page,
+					cancelToken: source.token,
+				};
 				const request = await axios.get(`${DATABASE_PATH}/events`, { params });
 				const response = await request.data;
 
@@ -61,10 +68,17 @@ const EventsListPage = () => {
 				setEvents((prevEvents) => [...prevEvents, ...response]);
 				return response;
 			} catch (error) {
-				console.error("had an error fetching events from database", error);
+				if (axios.isCancel(err)) {
+					console.log("successfully aborted");
+				} else {
+					console.error("had an error fetching events from database", error);
+				}
 			}
 		};
-		getEvents(goodPageSize, page, events);
+		getEvents(goodPageSize, page);
+		return () => {
+			source.cancel();
+		};
 	}, [page]);
 
 	return (
