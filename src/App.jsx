@@ -21,6 +21,7 @@ import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import EventsTeaserPage from "./Pages/EventsTeaserPage";
 
+/** @type {string}  the database path*/
 export const databasePath = "http://localhost:6969";
 
 export const makeToast = (message = "Here is your toast.", icon = "👏") => {
