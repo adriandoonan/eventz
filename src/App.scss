@@ -1,9 +1,9 @@
 @use "@picocss/pico/scss/pico" with ( // Theme color
   // amber, azure, blue, cyan, fuchsia, green, grey, indigo, jade, lime, orange, pink, pumpkin, purple, red, sand, slate, violet, yellow, zinc
-  $theme-color: "azure" , 
+  $theme-color: "zinc" , 
 
   // Prefix for CSS variables
-  $css-var-prefix: "--pico-" , // Must start with "--"
+  $css-var-prefix: "--eventz-" , // Must start with "--"
 
   // Define the root element used to target <header>, <main>, <footer>
   // with $enable-semantic-container and $enable-responsive-spacings
@@ -18,7 +18,7 @@
 
   // Enable responsive spacings for <header>, <main>, <footer>, <section>, <article>
   // Fixed spacings by default
-  $enable-responsive-spacings: false ,
+  $enable-responsive-spacings: true ,
 
   // Enable responsive typography
   // Fixed root element size (rem) if disabled
@@ -26,7 +26,7 @@
 
   // Enable .classes
   // .classless version if disabled
-  $enable-classes: false ,
+  $enable-classes: true ,
 
   // Enable transitions
   $enable-transitions: true ,
@@ -43,18 +43,18 @@
       "themes/default": true,
 
       // Layout
-      "layout/document": false,
+      "layout/document": true,
       "layout/landmarks": false,
-      "layout/container": false,
+      "layout/container": true,
       "layout/section": false,
       "layout/grid": true,
       "layout/overflow-auto": true,
 
       // Content
       "content/link": false,
-      "content/typography": false,
+      "content/typography": true,
       "content/embedded": false,
-      "content/button": false,
+      "content/button": true,
       "content/table": false,
       "content/code": false,
       "content/figure": false,
@@ -104,8 +104,6 @@
 //  @import 'open-props/src/extra/theme.light';
 
 
-
-
 :root {
   --header-height: 60px;
   --footer-height: 60px;
@@ -118,29 +116,89 @@
   --eventz-purple: #BE4BDB;
   --eventz-mauve: #9775FA;
   --eventz-black: #252521;
-  --eventz-background-color: var(--eventz-off-white);
-  --eventz-text-color: var(--eventz-black);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+// // light color scheme
+// :root:not([data-theme=dark]) {
+//   --pico-background-color: var(--eventz-off-white);
+//   --pico-text-color: var(--eventz-black);
+// }
+
+// // Dark color scheme (Auto) 
+// // Automatically enabled if user has Dark mode enabled 
+// @media only screen and (prefers-color-scheme: dark) {
+//   :root:not([data-theme]) {
+//     --pico-background-color:  var(--eventz-grey-dark);
+//     --pico-text-color: var(--eventz-grey-ultralight);
+//   }
+// }
+
+// // Dark color scheme (Forced)
+// // Enabled if forced with data-theme="dark"
+// [data-theme="dark"] {
+//   --pico-background-color:  var(--eventz-grey-dark);
+//   --pico-text-color: var(--eventz-grey-ultralight);
+// }
+
+
+/* Orange color for light color scheme (Default) */
+/* Can be forced with data-theme="light" */
+[data-theme=light],
+:root:not([data-theme=dark]) {
+  --eventz-background-color: var(--eventz-off-white);
+  --eventz-color: var(--eventz-black);
+  --eventz-text-selection-color: rgba(244, 93, 44, 0.25);
+  --eventz-primary: #bd3c13;
+  --eventz-primary-background: #d24317;
+  --eventz-primary-underline: rgba(189, 60, 19, 0.5);
+  --eventz-primary-hover: #942d0d;
+  --eventz-primary-hover-background: #bd3c13;
+  --eventz-primary-focus: rgba(244, 93, 44, 0.5);
+  --eventz-primary-inverse: #fff;
+}
+
+/* Orange color for dark color scheme (Auto) */
+/* Automatically enabled if user has Dark mode enabled */
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
     --eventz-background-color: var(--eventz-grey-dark);
-    --eventz-text-color: var(--eventz-grey-ultralight);
+    --eventz-color: var(--eventz-grey-ultralight);
+    --eventz-text-selection-color: rgba(245, 107, 61, 0.1875);
+    --eventz-primary: #f56b3d;
+    --eventz-primary-background: #d24317;
+    --eventz-primary-underline: rgba(245, 107, 61, 0.5);
+    --eventz-primary-hover: #f8a283;
+    --eventz-primary-hover-background: #e74b1a;
+    --eventz-primary-focus: rgba(245, 107, 61, 0.375);
+    --eventz-primary-inverse: #fff;
   }
+}
+/* Orange color for dark color scheme (Forced) */
+/* Enabled if forced with data-theme="dark" */
+[data-theme=dark] {
+  --eventz-background-color: var(--eventz-grey-dark);
+  --eventz-color: var(--eventz-grey-ultralight);
+  --eventz-text-selection-color: rgba(245, 107, 61, 0.1875);
+  --eventz-primary: #f56b3d;
+  --eventz-primary-background: #d24317;
+  --eventz-primary-underline: rgba(245, 107, 61, 0.5);
+  --eventz-primary-hover: #f8a283;
+  --eventz-primary-hover-background: #e74b1a;
+  --eventz-primary-focus: rgba(245, 107, 61, 0.375);
+  --eventz-primary-inverse: #fff;
 }
 
 html {
   height: 100%;
-  background-color: cornflowerblue;
+  //background-color: var(--pico-background-color);
   font-family: var(--font-sans);
 }
 
 body {
   min-height: 100%;
-  background-color: var(--eventz-background-color);
   margin: 0;
   padding: 0;
-
+  background-color: var(--eventz-background-color);
 }
 
 #root {
@@ -165,25 +223,30 @@ header {
     align-items: center;
 
     ul:nth-child(1) {
-      list-style-type: none;
+      
       padding-left: 0;
-      >li > a {
-        color: var(--eventz-green);
-        text-decoration: none;
-        &:hover {
-          filter: brightness(120%);
+      >li {
+        list-style-type: none;
+        > a {
+          color: var(--eventz-green);
+          text-decoration: none;
+          &:hover {
+            filter: brightness(120%);
+          }
         }
       }
     }
-
     ul:nth-child(2) {
       display: flex;
       list-style-type: none;
       gap: 0.5rem;
-      > li > a {
-        color: var(--eventz-grey-light);
-        &:hover {
-          filter: brightness(120%);
+      > li {
+        list-style-type: none;
+        > a {
+          color: var(--eventz-contrast);
+          &:hover {
+            filter: brightness(120%);
+          }
         }
       }
     }
@@ -196,10 +259,10 @@ header {
   grid-template-columns: auto 1fr;
   margin-bottom: 0;
   // background-color: var(--eventz-background-color);
-  color: var(--eventz-text-color);
+  // color: var(--eventz-text-color);
 
   & aside {
-    background-color: lightcoral;
+    //background-color: lightcoral;
     display: none;
 
     @media screen and (min-width: 600px) {
@@ -222,10 +285,15 @@ header {
   display: grid;
   grid-template-areas: "stack";
   place-items: center;
-  margin-top: 0.8rem;
-
+  margin-bottom: 3rem;
+  
   >img.homepage-hero-image {
     grid-area: stack;
+    
+    object-fit: cover;
+    @media screen and (width > 1000px) {
+      aspect-ratio: 5/2;
+    }
   }
 
   >h1.homepage-hero-title {
@@ -246,11 +314,22 @@ header {
   padding: 1rem;
   margin: 0 auto;
   max-width: 60rem;
+  text-align: center;
+  h1 {
+    font-size: var(--font-size-6);
+    padding: 4rem 0 2rem 0;
+    margin: 0 auto;
+  }
+  p {
+    padding: 2rem;
+    text-align: left;
+    margin: 0 auto;
+  }
 }
 
 footer {
   height: var(--footer-height);
-  background-color: aqua;
+  //background-color: aqua;
   padding: 1rem;
 
   nav {
@@ -259,7 +338,6 @@ footer {
     justify-content: flex-start;
 
     ul {
-      list-style-type: none;
       display: flex;
       justify-content: space-around;
       margin: auto 0;
@@ -267,6 +345,9 @@ footer {
 
       li:first-child {
         justify-self: flex-start;
+      }
+      li {
+        list-style-type: none;
       }
     }
 
@@ -333,6 +414,7 @@ footer {
   @media screen and (width > 1400px) {
     width: 250px;
     height: 250px;
+    margin-right: 0;
   }
 }
 
@@ -341,4 +423,44 @@ footer {
   width: 100%;
   height: 100%;
   border-radius: 1rem;
+}
+
+// form
+.submit-event-form-container {
+  max-width: 750px;
+  border-radius: 2rem;
+  background-color: var(--eventz-grey-light);
+  margin: 0 auto;
+  padding: 2rem;
+  > form {
+    max-width: 650px;
+    padding: 0 2rem;
+    margin: 0 auto;
+
+     > small {
+        max-inline-size: unset;
+      }
+    
+    div#submit-event-form-button-group {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 3rem
+    }
+  }
+}
+
+#login-dialog {
+  border-radius: 0;
+}
+#login-form {
+  footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+
+    > button {
+      width: auto;
+    }
+  }
 }

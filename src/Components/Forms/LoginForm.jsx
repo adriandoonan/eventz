@@ -39,23 +39,19 @@ export const LoginForm = ({
 			/>
 			{badPassword && <small id="password-helper">Password incorrect.</small>}
 
-			<div
-				role="group"
-				style={{ display: "flex", justifyContent: "space-between" }}
-			>
-				<button type="submit" style={{ width: "auto" }}>
-					Log In
-				</button>
+			<footer role="group">
+				<button type="submit">Log In</button>
 				<button
 					type="button"
+					className="contrast"
 					onClick={(event) => {
 						console.log(event);
-						event.target.parent().close();
+						event.target.closest("dialog").close();
 					}}
 				>
 					Close
 				</button>
-			</div>
+			</footer>
 		</form>
 	);
 };

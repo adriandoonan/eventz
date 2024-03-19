@@ -13,7 +13,6 @@ import SubmitEventPage from "./Pages/SubmitEventPage";
 import NotFoundPage from "./Pages/NotFoundPage";
 import HeaderNav from "./Components/Navigation/HeaderNav";
 import Footer from "./Components/Navigation/Footer";
-import SideBar from "./Components/Navigation/SideBar";
 import AboutPage from "./Pages/AboutPage";
 import EventsCalendarPage from "./Pages/EventsCalendarPage";
 
@@ -59,51 +58,47 @@ function App() {
 			<Toaster />
 			<HeaderNav isAuthenticated={isAuthenticated} />
 
-			<section id="main-content">
-				<SideBar />
+			<main className="main-content">
+				<Routes>
+					<Route path="/" element={<HomePage />} />
 
-				<main className="">
-					<Routes>
-						<Route path="/" element={<HomePage />} />
+					<Route path="/events-teaser" element={<EventsTeaserPage />} />
 
-						<Route path="/events-teaser" element={<EventsTeaserPage />} />
+					<Route path="/events" element={<EventsListPage />} />
 
-						<Route path="/events" element={<EventsListPage />} />
+					<Route path="/events-calendar" element={<EventsCalendarPage />} />
 
-						<Route path="/events-calendar" element={<EventsCalendarPage />} />
+					<Route path="/events/:eventSlug" element={<EventDetailPage />} />
 
-						<Route path="/events/:eventSlug" element={<EventDetailPage />} />
+					<Route
+						path="/events/:eventSlug/performers"
+						element={<PerformersListPage />}
+					/>
 
-						<Route
-							path="/events/:eventSlug/performers"
-							element={<PerformersListPage />}
-						/>
+					<Route
+						path="/events/:eventSlug/performers/:performerId"
+						element={<PerformerDetailPage />}
+					/>
 
-						<Route
-							path="/events/:eventSlug/performers/:performerId"
-							element={<PerformerDetailPage />}
-						/>
+					<Route path="/submit-event" element={<SubmitEventPage />} />
 
-						<Route path="/events/submit-event" element={<SubmitEventPage />} />
+					<Route path="/about" element={<AboutPage />} />
 
-						<Route path="/about" element={<AboutPage />} />
+					<Route
+						path="/admin"
+						element={
+							<AdminPage
+								isAuthenticated={isAuthenticated}
+								setIsAuthenticated={setIsAuthenticated}
+								needsAuth={needsAuth}
+								setNeedsAuth={setNeedsAuth}
+							/>
+						}
+					/>
 
-						<Route
-							path="/admin"
-							element={
-								<AdminPage
-									isAuthenticated={isAuthenticated}
-									setIsAuthenticated={setIsAuthenticated}
-									needsAuth={needsAuth}
-									setNeedsAuth={setNeedsAuth}
-								/>
-							}
-						/>
-
-						<Route path="*" element={<NotFoundPage />} />
-					</Routes>
-				</main>
-			</section>
+					<Route path="*" element={<NotFoundPage />} />
+				</Routes>
+			</main>
 
 			<Footer />
 		</>
