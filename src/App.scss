@@ -43,7 +43,7 @@
       "themes/default": true,
 
       // Layout
-      "layout/document": false,
+      "layout/document": true,
       "layout/landmarks": false,
       "layout/container": true,
       "layout/section": false,
@@ -52,7 +52,7 @@
 
       // Content
       "content/link": false,
-      "content/typography": false,
+      "content/typography": true,
       "content/embedded": false,
       "content/button": true,
       "content/table": false,
@@ -223,25 +223,30 @@ header {
     align-items: center;
 
     ul:nth-child(1) {
-      list-style-type: none;
+      
       padding-left: 0;
-      >li > a {
-        color: var(--eventz-green);
-        text-decoration: none;
-        &:hover {
-          //filter: brightness(120%);
+      >li {
+        list-style-type: none;
+        > a {
+          color: var(--eventz-green);
+          text-decoration: none;
+          &:hover {
+            filter: brightness(120%);
+          }
         }
       }
     }
-
     ul:nth-child(2) {
       display: flex;
       list-style-type: none;
       gap: 0.5rem;
-      > li > a {
-        //color: var(--eventz-grey-light);
-        &:hover {
-          //filter: brightness(120%);
+      > li {
+        list-style-type: none;
+        > a {
+          color: var(--eventz-contrast);
+          &:hover {
+            filter: brightness(120%);
+          }
         }
       }
     }
@@ -282,7 +287,6 @@ header {
   place-items: center;
   margin-bottom: 3rem;
   
-
   >img.homepage-hero-image {
     grid-area: stack;
     
@@ -315,7 +319,6 @@ header {
     font-size: var(--font-size-6);
     padding: 4rem 0 2rem 0;
     margin: 0 auto;
-
   }
   p {
     padding: 2rem;
@@ -335,7 +338,6 @@ footer {
     justify-content: flex-start;
 
     ul {
-      list-style-type: none;
       display: flex;
       justify-content: space-around;
       margin: auto 0;
@@ -343,6 +345,9 @@ footer {
 
       li:first-child {
         justify-self: flex-start;
+      }
+      li {
+        list-style-type: none;
       }
     }
 
@@ -421,10 +426,41 @@ footer {
 }
 
 // form
-
-.submit-event-form {
+.submit-event-form-container {
+  max-width: 750px;
+  border-radius: 2rem;
+  background-color: var(--eventz-grey-light);
   margin: 0 auto;
-  form {
+  padding: 2rem;
+  > form {
+    max-width: 650px;
+    padding: 0 2rem;
     margin: 0 auto;
+
+     > small {
+        max-inline-size: unset;
+      }
+    
+    div#submit-event-form-button-group {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 3rem
+    }
+  }
+}
+
+#login-dialog {
+  border-radius: 0;
+}
+#login-form {
+  footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+
+    > button {
+      width: auto;
+    }
   }
 }

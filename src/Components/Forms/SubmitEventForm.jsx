@@ -2,6 +2,7 @@ import { useReducer } from "react";
 import axios from "axios";
 import { databasePath } from "../../App";
 import { makeToast } from "../../App";
+import Select from "react-select";
 
 const emptyForm = {
 	// id: 5, we would generate the id on saving to the api
@@ -33,13 +34,22 @@ const emptyForm = {
 	// ]
 };
 
-const formStyle = {
-	maxWidth: "650px",
-	margin: "0 auto",
-};
+const tags = [
+	{ value: "kid-friendly", label: "Kid-Friendly" },
+	{ value: "dj-set", label: "DJ Set" },
+	{ value: "techno", label: "Techno" },
+	{ value: "rock", label: "Rock" },
+	{ value: "foodie", label: "Foodie" },
+	{ value: "outdoor", label: "Outdoor" },
+	{ value: "wellness", label: "Wellness" },
+	{ value: "cultural", label: "Cultural" },
+	{ value: "networking", label: "Networking" },
+	{ value: "interactive", label: "Interactive" },
+];
 
 const submitToDB = async (event, state) => {
 	event.preventDefault();
+	//console.log(event);
 	try {
 		const request = await axios.post(`${databasePath}/events`, {
 			...state,
@@ -64,15 +74,21 @@ const eventFormReducer = (state, action) => {
 		case "input_venue":
 		case "input_start_date":
 		case "input_end_date":
-		case "input_organiser":
-		case "input_tags":
-		case "input_other_images": {
+		case "input_organiser": {
 			//console.log(action.payload);
 			const { name, value } = action.payload.target;
 			return {
 				...state,
 				[name]: value,
 			};
+		}
+		case "input_tags": {
+			//console.log("tags", action.payload);
+			return { ...state, tags: action.payload };
+		}
+		case "input_other_images": {
+			//console.log("images", action.payload);
+			return { ...state };
 		}
 		case "clear_form_inputs": {
 			return emptyForm;
@@ -88,7 +104,7 @@ const SubmitEventForm = () => {
 	const [state, dispatch] = useReducer(eventFormReducer, emptyForm);
 
 	return (
-		<form onSubmit={(event) => submitToDB(event, state)} style={formStyle}>
+		<form onSubmit={(event) => submitToDB(event, state)} id="submit-event-form">
 			<label>Name:</label>
 			<input
 				type="text"
@@ -188,16 +204,19 @@ const SubmitEventForm = () => {
 			<small>The official event organiser</small>
 
 			<label>Tags:</label>
-			<input
-				type="text"
-				value={state.tags}
-				name="tags"
-				required
+			<Select
+				options={tags}
+				isMulti={true}
+				form="submit-event-form"
 				onChange={(event) => dispatch({ type: "input_tags", payload: event })}
 			/>
-			<small>Select tags matching your event</small>
+			<small
+				style={{ color: "var(--eventz-muted-color)", marginBottom: "16px" }}
+			>
+				Select tags matching your event
+			</small>
 
-			<label>Other images:</label>
+			{/* <label>Other images:</label> // Leave this and we can ask for other images once an event has been accepted
 			<input
 				type="text"
 				value={state.images}
@@ -207,17 +226,19 @@ const SubmitEventForm = () => {
 					dispatch({ type: "input_other_images", payload: event })
 				}
 			/>
-			<small>We'll use any other images in the event details page</small>
+			<small>We'll use any other images in the event details page</small> */}
 
-			<button type="submit">Submit Event</button>
-			<button
-				type="reset"
-				onClick={(event) =>
-					dispatch({ type: "clear_form_inputs", payload: event })
-				}
-			>
-				Clear
-			</button>
+			<div id="submit-event-form-button-group">
+				<button type="submit">Submit Event</button>
+				<button
+					type="reset"
+					onClick={(event) =>
+						dispatch({ type: "clear_form_inputs", payload: event })
+					}
+				>
+					Clear
+				</button>
+			</div>
 		</form>
 	);
 };
