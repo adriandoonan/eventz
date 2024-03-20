@@ -548,7 +548,7 @@ footer {
               min-height: 355px;
             }
             > h2 {
-              font-size: var(--font-size-fluid-0);
+              font-size: var(--font-size-fluid-1);
             }
           }
         }
@@ -573,7 +573,7 @@ footer {
             aspect-ratio: 13 / 18;
           }
           > h2 {
-            font-size: var(--font-size-fluid-0);
+            font-size: var(--font-size-fluid-1);
           }
         }
       }
@@ -613,7 +613,7 @@ footer {
         color: var(--eventz-near-white);
         background-color: var(--event-deep-purple);
         margin-bottom: 0;
-        font-size: var(--font-size-fluid-0);
+        font-size: var(--font-size-fluid-1);
       }
     }
   }
