@@ -509,71 +509,47 @@ footer {
 
 // event tile
 .events-list-page {
-  padding: 1 rem;
+  padding: 1rem;
   display: grid;
   gap: 1rem;
 
-  // For mobile devices
-  @media screen and (max-width: 320px) {
-    grid-template-columns: 1fr; // Single column layout
-  }
-
-  // For tablets
-  @media screen and (min-width: 768px) {
-    grid-template-columns: repeat(2, minmax(200px, 1fr)); // Two columns layout
-    gap: 0.75rem;
-  }
-
-  @media screen and (width > 1024px) {
+  @media screen and (width > 700px) {
     grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr) minmax(
         200px,
         1fr
       );
-    gap: 0.75rem;
+    gap: 0.25rem;
   }
 
   > .event-tile {
-    display: grid;
-    align-self: end;
-    height: 100%;
-
     &.featured {
-      @media screen and (width > 768px) {
+      @media screen and (width > 700px) {
         &:nth-child(even) {
           grid-row: span 2;
           > a {
             > img {
               aspect-ratio: 13 / 18;
+
               max-height: 355px;
               min-height: 355px;
             }
             > h2 {
-              font-size: var(--font-size-fluid-1);
+              font-size: var(--size-fluid-3);
             }
           }
         }
-
         &:nth-child(odd) {
           grid-column: span 2;
           > a {
             > img {
               aspect-ratio: 3/1;
-              max-width: 100%;
-              min-width: 100%;
+
+              max-width: 530px;
+              min-width: 530px;
             }
-          }
-        }
-      }
-    }
-    @media screen and (max-width: 768px) {
-      .event-tile.featured {
-        grid-row: span 2;
-        > a {
-          > img {
-            aspect-ratio: 13 / 18;
-          }
-          > h2 {
-            font-size: var(--font-size-fluid-1);
+            > h2 {
+              font-size: var(--size-fluid-3);
+            }
           }
         }
       }
@@ -587,7 +563,6 @@ footer {
           color: var(--eventz-black);
           filter: blur(4px);
           margin-bottom: 0;
-          height: 100%;
         }
       }
     }
@@ -613,7 +588,9 @@ footer {
         color: var(--eventz-near-white);
         background-color: var(--event-deep-purple);
         margin-bottom: 0;
-        font-size: var(--font-size-fluid-1);
+        @media screen and (width > 700px) {
+          font-size: var(--font-size-fluid-0);
+        }
       }
     }
   }

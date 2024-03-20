@@ -1,0 +1,126 @@
+Last login: Sat Mar 16 22:55:58 on ttys000
+[oh-my-zsh] Would you like to update? [Y/n] l
+[oh-my-zsh] You can update manually by running `omz update`
+s%                                                                              ➜  ~ s
+zsh: command not found: s
+➜  ~ ls
+584999937b7d4d76317f5ffd.png
+Applications
+Astute Manager
+Creative Cloud Files
+Creative Cloud Files c.bell1220211@arts.ac.uk fa292a2437cd6991156b36e55524a9709d3891edf95f69b9b6ebbd7b9eaa6826
+Creative Cloud Files m.misurell@gmail.com 5b95ebf7239322073aa4da3aad36b30d5bb77769a2a1532494d47d29b72d4305
+Creative Cloud Files m.misurell@yahoo.com a042c30767882100aae7192ef5b3d6669838fb29debaae2192981a94ed3e8fb5
+Creative Cloud Files mmi@hellofresh.com 397919437370ef58e06fc9d26941ab714c090352897a9f4f9ca47c4a19ae14de
+Creative Cloud Files mmi@hellofresh.com 7e345e2023baf9ece9de6103509bc8fefe4ab26330988905c9010846c5798a66
+Desktop
+Documents
+Documents-assets
+Downloads
+Dropbox
+Google Drive
+Jottacloud
+Library
+Movies
+Music
+Pictures
+Public
+To-Do-app-Mini-Project
+To-Do-app-Mini-Project Backup
+git-practice
+lab-es6-promises
+lab-es6-promises backup
+lab-react-cohort-tools
+lab-react-discord-hero
+lab-react-exponents-counter
+lab-react-fake-store
+lab-react-forms
+lab-react-iron-brewers
+lab-react-iron-travels
+lab-react-ironcontacts-vite
+lab-react-props-training
+lab-react-state-training
+my-first-page
+package-lock.json
+package.json
+➜  ~ git clone https://github.com/adriandoonan/eventz.git
+Cloning into 'eventz'...
+remote: Enumerating objects: 346, done.
+remote: Counting objects: 100% (346/346), done.
+remote: Compressing objects: 100% (266/266), done.
+remote: Total 346 (delta 142), reused 262 (delta 72), pack-reused 0
+Receiving objects: 100% (346/346), 20.72 MiB | 14.70 MiB/s, done.
+Resolving deltas: 100% (142/142), done.
+➜  ~ cd eventz
+➜  eventz git:(main) cd eventz-backend 
+➜  eventz-backend git:(main) ls
+➜  eventz-backend git:(main) git pull
+Already up to date.
+➜  eventz-backend git:(main) ..
+➜  eventz git:(main) git submodule update --init --recursive
+Submodule 'eventz-backend' (https://github.com/adriandoonan/eventz-backend.git) registered for path 'eventz-backend'
+Cloning into '/Users/michael.misurell/eventz/eventz-backend'...
+Submodule path 'eventz-backend': checked out '093e7cfe8bc6f7fcbc9fa5b4307198d103f416c6'
+➜  eventz git:(main) cd eventz-backend
+➜  eventz-backend git:(093e7cf) ls
+LICENSE           app.js            package-lock.json
+README.md         eventz-db.json    package.json
+➜  eventz-backend git:(093e7cf) npm install
+
+up to date, audited 173 packages in 932ms
+
+22 packages are looking for funding
+  run `npm fund` for details
+
+2 moderate severity vulnerabilities
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+➜  eventz-backend git:(093e7cf) ..   
+➜  eventz git:(main) npm install
+
+added 356 packages, and audited 357 packages in 7s
+
+109 packages are looking for funding
+  run `npm fund` for details
+
+1 moderate severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+➜  eventz git:(main) git checkout -b
+error: switch `b' requires a value
+➜  eventz git:(main) git checkout -b "wednesday"
+Switched to a new branch 'wednesday'
+➜  eventz git:(wednesday) npm run dev
+
+> eventz@0.0.0 dev
+> vite
+
+
+  VITE v5.1.6  ready in 576 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+h
+
+  Shortcuts
+  press r + enter to restart the server
+  press u + enter to show server url
+  press o + enter to open in browser
+  press c + enter to clear console
+  press q + enter to quit
+o
+q
+➜  eventz git:(wednesday) code .
+➜  eventz git:(wednesday) 
+
+
+
+
+
