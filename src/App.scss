@@ -481,6 +481,23 @@ footer {
   border: 1px red solid;
 }
 
+dialog#edit-event-dialog {
+    overflow-y: auto;
+    &[open] {display: grid;}
+    padding: 2rem;
+    border-radius: 0;
+    small {
+      display: none;
+    }
+    #submit-event-form-button-group {
+      margin-top: 2rem;
+      
+      > button:nth-child(2) {
+        display: none;
+      }
+    }
+}
+
 // end forms
 
 // EVENTS

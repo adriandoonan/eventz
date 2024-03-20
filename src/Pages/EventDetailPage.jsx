@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { DATABASE_PATH, dateToNormal } from "../App";
+import { DATABASE_PATH } from "../App";
+import EventDetailView from "../Components/Events/EventDetailView";
 
 const EventDetailPage = () => {
 	const [event, setEvent] = useState(null);
@@ -32,43 +33,12 @@ const EventDetailPage = () => {
 	if (event.id === undefined) {
 		return <h1>Couldn't find details for that event</h1>;
 	}
-	const { name, description, organiser, promoImage, featuredEvent, tags } =
-		event;
-	//dayAndDate,timeAndTimeZone
-	const { dayAndDate: startDate, timeAndTimeZone: startTime } = dateToNormal(
-		event.startDate,
-	);
-	const { dayAndDate: endDate, timeAndTimeZone: endTime } = dateToNormal(
-		event.endDate,
-	);
-	document.title = `Eventz! | ${name}`;
+
+	document.title = `Eventz! | ${event.name}`;
 	return (
 		<>
-			<div className="event-details">
-				<h1>{name}</h1>
-				<article className="event-details-hero">
-					<img src={promoImage} alt={name} />
-					<h2>{featuredEvent ? "Featured Event" : ""}</h2>
-				</article>
-				<article className="event-details-tag-container">
-					{tags.map(({ value, label }) => (
-						<span key={value} className="event-details-tag">
-							{label}
-						</span>
-					))}
-				</article>
-				<p className="event-details-page-times">
-					This event is happening from {startDate} at {startTime} to {endDate}{" "}
-					at {endTime}.
-				</p>
+			<EventDetailView {...event} />
 
-				{description.split("\n").map((paragraph, index) => {
-					return <p key={index}>{paragraph}</p>;
-				})}
-				<p className="event-details-organiser">
-					Brought to you by <strong>{organiser}</strong>
-				</p>
-			</div>
 			<button type="button" onClick={() => navigate(-1)}>
 				Back
 			</button>
