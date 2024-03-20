@@ -41,6 +41,7 @@ const AdminPage = ({
 				`${DATABASE_PATH}/submissions/${state.id}`,
 				{
 					...state,
+					slug: state.name.trim().toLowerCase().replaceAll(" ", "-"),
 					edited: new Date(),
 				},
 			);
@@ -217,7 +218,12 @@ const AdminPage = ({
 										{dateToNormal(created).timeAndTimeZone}
 									</td>
 									<td>{organiser}</td>
-									<td>{name}</td>
+									<td>
+										{name}
+										<br />
+										<br />
+										{tags?.map(({ label }) => label).join(", ")}
+									</td>
 									<td>{description}</td>
 									<td>
 										<img
@@ -261,6 +267,7 @@ const AdminPage = ({
 													endDate,
 													venue,
 													location,
+													created,
 												});
 												dispatch({
 													type: "overwrite_state",
