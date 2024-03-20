@@ -117,7 +117,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap");
 
-root {
+:root {
   --header-height: 60px;
   --footer-height: 100%;
   --eventz-green: #74b816;
@@ -128,7 +128,7 @@ root {
   --eventz-grey-dark: #494949;
   --eventz-pink: #f06595;
   --eventz-purple: #be4bdb;
-  --event-deep-purple: #5a1e69;
+  --eventz-deep-purple: #5a1e69;
   --eventz-mauve: #9775fa;
   --eventz-black: #252521;
 }
@@ -353,6 +353,12 @@ footer {
       }
       li {
         list-style-type: none;
+        a {
+          color: var(--eventz-color);
+          &:hover {
+            filter: brightness(125%)
+          }
+        }
       }
     }
 
@@ -361,6 +367,7 @@ footer {
       margin-right: auto;
       margin-bottom: 0;
       text-align: center;
+      color: var(--eventz-color);
     }
   }
 }
@@ -502,7 +509,7 @@ footer {
     }
 
     > h2 {
-      background-color: var(--event-deep-purple);
+      background-color: var(--eventz-deep-purple);
       color: var(----neutral-0, #fff);
       text-align: center;
       font-family: Praetorian;
@@ -527,7 +534,7 @@ footer {
 
 // event tile
 .events-list-page {
-  padding: 1 rem;
+  padding: 1rem;
   display: grid;
   gap: 1rem;
 
@@ -629,7 +636,7 @@ footer {
         max-inline-size: 100%;
         font-size: var(--font-size-fluid-2);
         color: var(--eventz-near-white);
-        background-color: var(--event-deep-purple);
+        background-color: var(--eventz-deep-purple);
         margin-bottom: 0;
         font-size: var(--font-size-fluid-1);
       }
