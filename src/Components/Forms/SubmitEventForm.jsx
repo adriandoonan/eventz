@@ -1,109 +1,50 @@
 import { useReducer } from "react";
-import axios from "axios";
-import { DATABASE_PATH } from "../../App";
-import { makeToast } from "../../App";
+import { tags } from "../../App";
+import { eventFormReducer } from "./EventFormReducer";
+
 import Select from "react-select";
 
-const emptyForm = {
-	// id: 5, we would generate the id on saving to the api
-	// slug: "", we can do this on submit
-	name: "",
-	description: "",
-	location: "",
-	// locationCoords: "37.7749, -122.4194", // would we need to call an api to get the city coords?
-	venue: "",
-	startDate: "", //new Date().toISOString().slice(0, -8),
-	endDate: "", //new Date().toISOString().slice(0, -8),
-	organiser: "",
-	tags: null, // we would need to provide a list of possible tags
-	promoImage: "",
-	images: [
-		{
-			url: "",
-			altText: "",
-			credit: "",
-		},
-	],
-	// there won't be any post show images until after the show
-	// postShowImages: [
-	//   {
-	//     url: "https://some.com/tech-conference-post-image1.png",
-	//     altText: "Attendees exchanging business cards",
-	//     credit: "TechTalk Conferences"
-	//   }
-	// ]
-};
+// const eventFormReducer = (state, action) => {
+// 	switch (action.type) {
+// 		case "input_name":
+// 		case "input_description":
+// 		case "input_promo_image":
+// 		case "input_location":
+// 		case "input_venue":
+// 		case "input_start_date":
+// 		case "input_end_date":
+// 		case "input_organiser": {
+// 			//console.log(action.payload);
+// 			const { name, value } = action.payload.target;
+// 			return {
+// 				...state,
+// 				[name]: value,
+// 			};
+// 		}
+// 		case "input_tags": {
+// 			//console.log("tags", action.payload);
+// 			return { ...state, tags: action.payload };
+// 		}
+// 		case "input_other_images": {
+// 			//console.log("images", action.payload);
+// 			return { ...state };
+// 		}
+// 		case "clear_form_inputs": {
+// 			return emptyForm;
+// 		}
+// 		case "overwrite_state": {
+// 			return {
+// 				...action.payload,
+// 			};
+// 		}
+// 		default: {
+// 			console.log("action not supported", action.type, action.payload);
+// 			return state;
+// 		}
+// 	}
+// };
 
-const tags = [
-	{ value: "kid-friendly", label: "Kid-Friendly" },
-	{ value: "dj-set", label: "DJ Set" },
-	{ value: "techno", label: "Techno" },
-	{ value: "rock", label: "Rock" },
-	{ value: "foodie", label: "Foodie" },
-	{ value: "outdoor", label: "Outdoor" },
-	{ value: "wellness", label: "Wellness" },
-	{ value: "cultural", label: "Cultural" },
-	{ value: "networking", label: "Networking" },
-	{ value: "interactive", label: "Interactive" },
-];
-
-const submitToDB = async (event, state) => {
-	event.preventDefault();
-	//console.log(event);
-	try {
-		const request = await axios.post(`${DATABASE_PATH}/submissions`, {
-			...state,
-			pendingApproval: true,
-			slug: state.name.trim().toLowerCase().replaceAll(" ", "-"),
-			created: new Date(),
-		});
-		const response = await request.data;
-		//console.log(response);
-		makeToast("Event submitted", "😎");
-	} catch (error) {
-		console.error("problem submitting event", error);
-		makeToast("Problems submitting event", "🥵");
-	}
-};
-
-const eventFormReducer = (state, action) => {
-	switch (action.type) {
-		case "input_name":
-		case "input_description":
-		case "input_promo_image":
-		case "input_location":
-		case "input_venue":
-		case "input_start_date":
-		case "input_end_date":
-		case "input_organiser": {
-			//console.log(action.payload);
-			const { name, value } = action.payload.target;
-			return {
-				...state,
-				[name]: value,
-			};
-		}
-		case "input_tags": {
-			//console.log("tags", action.payload);
-			return { ...state, tags: action.payload };
-		}
-		case "input_other_images": {
-			//console.log("images", action.payload);
-			return { ...state };
-		}
-		case "clear_form_inputs": {
-			return emptyForm;
-		}
-		default: {
-			console.log("action not supported", action.type, action.payload);
-			return state;
-		}
-	}
-};
-
-const SubmitEventForm = () => {
-	const [state, dispatch] = useReducer(eventFormReducer, emptyForm);
-
+const SubmitEventForm = ({ submitToDB, initialState, dispatch, state }) => {
 	return (
 		<form
 			onSubmit={(event) => submitToDB(event, state)}
@@ -227,18 +168,6 @@ const SubmitEventForm = () => {
 			>
 				Select tags matching your event
 			</small>
-
-			{/* <label>Other images:</label> // Leave this and we can ask for other images once an event has been accepted
-			<input
-				type="text"
-				value={state.images}
-				name="images"
-				required
-				onChange={(event) =>
-					dispatch({ type: "input_other_images", payload: event })
-				}
-			/>
-			<small>We'll use any other images in the event details page</small> */}
 
 			<div id="submit-event-form-button-group">
 				<button type="submit">Submit Event</button>

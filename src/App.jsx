@@ -17,13 +17,30 @@ import AboutPage from "./Pages/AboutPage";
 import EventsCalendarPage from "./Pages/EventsCalendarPage";
 
 import localDatabase from "./eventz-db.json";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useReducer } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import EventsTeaserPage from "./Pages/EventsTeaserPage";
+import {
+	eventFormReducer,
+	emptyForm,
+} from "./Components/Forms/EventFormReducer";
 
 /** @type {string}  the database path*/
 export const DATABASE_PATH =
 	import.meta.env.VITE_APP_URL || "http://localhost:6969";
+
+export const tags = [
+	{ value: "kid-friendly", label: "Kid-Friendly" },
+	{ value: "dj-set", label: "DJ Set" },
+	{ value: "techno", label: "Techno" },
+	{ value: "rock", label: "Rock" },
+	{ value: "foodie", label: "Foodie" },
+	{ value: "outdoor", label: "Outdoor" },
+	{ value: "wellness", label: "Wellness" },
+	{ value: "cultural", label: "Cultural" },
+	{ value: "networking", label: "Networking" },
+	{ value: "interactive", label: "Interactive" },
+];
 
 export const makeToast = (message = "Here is your toast.", icon = "👏") => {
 	toast(message, {
@@ -77,6 +94,7 @@ export const dateToNormal = (date) => {
 function App() {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	const [needsAuth, setNeedsAuth] = useState(false);
+	const [state, dispatch] = useReducer(eventFormReducer, emptyForm);
 
 	return (
 		<>
@@ -105,7 +123,10 @@ function App() {
 						element={<PerformerDetailPage />}
 					/>
 
-					<Route path="/events/submit-event" element={<SubmitEventPage />} />
+					<Route
+						path="/events/submit-event"
+						element={<SubmitEventPage state={state} dispatch={dispatch} />}
+					/>
 
 					<Route path="/about" element={<AboutPage />} />
 
@@ -117,6 +138,8 @@ function App() {
 								setIsAuthenticated={setIsAuthenticated}
 								needsAuth={needsAuth}
 								setNeedsAuth={setNeedsAuth}
+								state={state}
+								dispatch={dispatch}
 							/>
 						}
 					/>

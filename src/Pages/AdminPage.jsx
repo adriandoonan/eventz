@@ -5,17 +5,22 @@ import { jwtDecode } from "jwt-decode";
 import { DATABASE_PATH, dateToNormal, makeToast } from "../App";
 import { useEffect, useState } from "react";
 import EventDetailView from "../Components/Events/EventDetailView";
+import SubmitEventForm from "../Components/Forms/SubmitEventForm";
 
 const AdminPage = ({
 	isAuthenticated,
 	setIsAuthenticated,
 	needsAuth,
 	setNeedsAuth,
+	state,
+	dispatch,
 }) => {
 	const [users, setUsers] = useState(null);
 	const [submissions, setSubmissions] = useState(null);
 	const [previewOpen, setPreviewOpen] = useState(false);
 	const [previewEvent, setPreviewEvent] = useState(null);
+	const [editOpen, setEditOpen] = useState(false);
+	const [eventToEdit, setEventToEdit] = useState(null);
 
 	const getUsers = async () => {
 		const request = await axios.get(`${DATABASE_PATH}/users`, {
@@ -26,6 +31,32 @@ const AdminPage = ({
 		const response = await request.data;
 		console.log(response);
 		setUsers(response);
+	};
+
+	const handleEdit = async (event, state) => {
+		event.preventDefault();
+		//console.log(event);
+		try {
+			const request = await axios.put(
+				`${DATABASE_PATH}/submissions/${state.id}`,
+				{
+					...state,
+					edited: new Date(),
+				},
+			);
+			const response = await request.data;
+			//console.log(response);
+			makeToast("Event edited", "😎");
+			setSubmissions(
+				submissions.map((submission) =>
+					submission.id === state.id ? state : submission,
+				),
+			);
+			setEditOpen(false);
+		} catch (error) {
+			console.error("problem editing event", error);
+			makeToast("Problems editing event", "🥵");
+		}
 	};
 
 	const handleDelete = async (id, name) => {
@@ -170,11 +201,14 @@ const AdminPage = ({
 								created,
 								organiser,
 								name,
+								venue,
+								location,
 								description,
 								promoImage,
 								id,
 								startDate,
 								endDate,
+								tags,
 							}) => (
 								<tr key={id}>
 									<td>
@@ -205,13 +239,46 @@ const AdminPage = ({
 													id,
 													startDate,
 													endDate,
+													venue,
+													location,
 												});
 												setPreviewOpen(true);
 											}}
 										>
 											preview
 										</button>
-										<button type="button" className="primary">
+										<button
+											type="button"
+											className="primary"
+											onClick={() => {
+												setEventToEdit({
+													organiser,
+													name,
+													description,
+													promoImage,
+													id,
+													startDate,
+													endDate,
+													venue,
+													location,
+												});
+												dispatch({
+													type: "overwrite_state",
+													payload: {
+														organiser,
+														name,
+														description,
+														promoImage,
+														id,
+														startDate,
+														endDate,
+														venue,
+														location,
+													},
+												});
+												setEditOpen(true);
+											}}
+										>
 											edit
 										</button>
 										<button
@@ -235,6 +302,25 @@ const AdminPage = ({
 					</tbody>
 				</table>
 			)}
+
+			<dialog id="edit-event-dialog" open={editOpen}>
+				{eventToEdit && (
+					<SubmitEventForm
+						submitToDB={handleEdit}
+						initialState={eventToEdit}
+						state={state}
+						dispatch={dispatch}
+					/>
+				)}
+				<button
+					type="button"
+					onClick={() => {
+						setEditOpen(false);
+					}}
+				>
+					Close
+				</button>
+			</dialog>
 
 			<dialog id="preview-dialog" open={previewOpen}>
 				<button type="button" onClick={() => setPreviewOpen(false)}>
