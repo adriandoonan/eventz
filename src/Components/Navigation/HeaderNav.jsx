@@ -15,13 +15,13 @@ const HeaderNav = ({ isAuthenticated }) => {
 				</ul>
 				<ul>
 					<li>
-						<Link to="/about">About</Link>
-					</li>
-					<li>
 						<Link to="/events">Events</Link>
 					</li>
 					<li>
-						<Link to="/events-calendar">Calendar</Link>
+						<Link to="/about">About</Link>
+					</li>
+					<li>
+						<Link to="/admin">Sign in</Link>
 					</li>
 					<li>
 						<button

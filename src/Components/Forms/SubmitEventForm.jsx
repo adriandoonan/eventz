@@ -51,10 +51,11 @@ const submitToDB = async (event, state) => {
 	event.preventDefault();
 	//console.log(event);
 	try {
-		const request = await axios.post(`${DATABASE_PATH}/events`, {
+		const request = await axios.post(`${DATABASE_PATH}/submissions`, {
 			...state,
 			pendingApproval: true,
 			slug: state.name.trim().toLowerCase().replaceAll(" ", "-"),
+			created: new Date(),
 		});
 		const response = await request.data;
 		//console.log(response);
@@ -104,7 +105,11 @@ const SubmitEventForm = () => {
 	const [state, dispatch] = useReducer(eventFormReducer, emptyForm);
 
 	return (
-		<form onSubmit={(event) => submitToDB(event, state)} id="submit-event-form">
+		<form
+			onSubmit={(event) => submitToDB(event, state)}
+			id="submit-event-form"
+			data-theme="light"
+		>
 			<label>Name:</label>
 			<input
 				type="text"
@@ -210,6 +215,12 @@ const SubmitEventForm = () => {
 				form="submit-event-form"
 				value={state.tags}
 				onChange={(event) => dispatch({ type: "input_tags", payload: event })}
+				styles={{
+					option: (baseStyles, state) => ({
+						...baseStyles,
+						color: "var(--eventz-color)",
+					}),
+				}}
 			/>
 			<small
 				style={{ color: "var(--eventz-muted-color)", marginBottom: "16px" }}
