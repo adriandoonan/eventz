@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
 	return (
-		<footer>
+		<footer data-theme="dark">
 			<nav id="footer-nav">
 				<ul>
 					<li>
@@ -19,7 +19,7 @@ const Footer = () => {
 					</li>
 				</ul>
 				<small>
-					Copyright&nbsp;©&nbsp;{new Date().getFullYear()}
+					Copyright&nbsp;©&nbsp;{new Date().getFullYear()}{" "}
 					&nbsp;Eventz&nbsp;Cooperative
 				</small>
 			</nav>
