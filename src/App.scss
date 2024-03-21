@@ -74,7 +74,7 @@
 
     // Components
     "components/accordion": false,
-    "components/card": false,
+    "components/card": true,
     "components/dropdown": false,
     "components/group": false,
     "components/loading": false,
@@ -290,6 +290,7 @@ header {
   grid-template-areas: "stack";
   place-items: center;
   margin-bottom: 3rem;
+  padding: 0;
 
   > img.homepage-hero-image {
     grid-area: stack;
@@ -306,9 +307,13 @@ header {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: var(--size-fluid-6);
+    font-size: var(--size-fluid-4);
+    font-family: "Praetorian-Expanded-Italic";
+    @media screen and (width > 400px) {
+      font-size: var(--size-fluid-5);
+    }
     @media screen and (width > 715px) {
-      font-size: var(--size-fluid-8);
+      font-size: var(--size-fluid-7);
     }
   }
 }
@@ -339,18 +344,17 @@ footer {
 
   nav {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
 
     ul {
       display: flex;
       justify-content: space-around;
       margin: auto 0;
       padding: 0;
+      gap: .5rem;
 
-      li:first-child {
-        justify-self: flex-start;
-      }
       li {
         list-style-type: none;
         a {
@@ -464,12 +468,16 @@ footer {
 
 #login-dialog {
   border-radius: 0;
+  header {
+    width: unset;
+  }
 }
 #login-form {
   footer {
     display: flex;
     justify-content: space-between;
     padding: 1rem 0;
+    background-color: unset;
 
     > button {
       width: auto;
@@ -588,6 +596,9 @@ dialog#edit-event-dialog {
     align-self: stretch;
     height: 100%;
     flex-grow: 1;
+    padding: 0;
+    margin-bottom: 0;
+    background-color: var(--eventz-deep-purple);
 
     &.featured {
       flex-basis: 350px;
