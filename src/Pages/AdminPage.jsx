@@ -158,7 +158,7 @@ const AdminPage = ({
 	}, [isAuthenticated]);
 
 	return (
-		<div>
+		<div style={{ padding: "4rem 2rem" }}>
 			{!isAuthenticated && (
 				<div className="container" style={{ padding: "4rem 2rem" }}>
 					<p>Looks like you are not authorised to be here</p>
@@ -183,6 +183,7 @@ const AdminPage = ({
 			{isAuthenticated && (
 				<>
 					<h2>Submissions</h2>
+
 					<table>
 						<thead>
 							<tr>

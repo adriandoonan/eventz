@@ -138,9 +138,85 @@
   --eventz-pink: #f06595;
   --eventz-purple: #be4bdb;
   --eventz-deep-purple: #5a1e69;
+  --eventz-deep-purple-tint: #500a69;
   --eventz-mauve: #9775fa;
   --eventz-black: #252521;
   --eventz-font-sans: 'Maven Pro', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  ----brand-hover: var(----lime-2);
+  ----brand-primary: var(----lime-3);
+  ----button-primary-default: var(----violet-5);
+  ----button-primary-hover: var(----violet-3);
+  ----button-primary-pressed: var(----violet-7);
+  ----button-secondary-stroke-default: var(----violet-5);
+  ----button-secondary-stroke-hover: var(----violet-4);
+  ----button-secondary-stroke-pressed: var(----violet-7);
+  ----button-secondary-surface-default: var(----neutral-6);
+  ----button-secondary-surface-hover: var(----neutral-5);
+  ----button-secondary-surface-pressed: var(----neutral-7);
+  ----button-secondary-text-default: var(----neutral-0);
+  ----button-secondary-text-hover: var(----neutral-0);
+  ----button-secondary-text-pressed: var(----neutral-0);
+  ----button-text-color: #FFFFFFFF;
+  ----lime-0: #F4FCE3FF;
+  ----lime-2: #A9E34BFF;
+  ----lime-3: #82C91EFF;
+  ----lime-4: #66A80FFF;
+  ----lime-5: #4C7A0BFF;
+  ----lime-6: #3C6109FF;
+  ----lime-7: #2C4706FF;
+  ----lime1: #D8F5A2FF;
+  ----navigation-text-default: var(----neutral-2);
+
+  ----navigation-text-hover: var(----neutral-3);
+  ----navigation-text-pressed: var(----neutral-0);
+  ----neutral-0: #FFFFFFFF;
+  ----neutral-1: #F8FAFBFF;
+  ----neutral-10: #000000FF;
+  ----neutral-2: #F2F4F6FF;
+  ----neutral-3: #D1D6D8FF;
+  ----neutral-4: #979B9DFF;
+  ----neutral-5: #50514FFF;
+  ----neutral-6: #3A3A37FF;
+  ----neutral-7: #252521FF;
+  ----neutral-8: #252521FF;
+  ----neutral-9: #121210FF;
+  ----pink-0: #FFF0F6FF;
+  ----pink-1: #FCC2D7FF;
+  ----pink-2: #F783ACFF;
+  ----pink-3: #E64980FF;
+  ----pink-4: #C2255CFF;
+  ----pink-5: #8C1941FF;
+  ----pink-6: #731536FF;
+  ----pink-7: #59102AFF;
+  ----purple-0: #F8F0FCFF;
+  ----purple-1: #EEBEFAFF;
+  ----purple-2: #DA77F2FF;
+  ----purple-3: #BE4BDBFF;
+  ----purple-4: #9C36B5FF;
+  ----purple-5: #702682FF;
+  ----purple-6: #5A1E69FF;
+  ----purple-7: #44174FFF;
+  ----surface-background-body: var(----neutral-6);
+  ----surface-background-container: var(----neutral-5);
+  ----surface-background-navigation: var(----neutral-7);
+  ----text-primary: var(----neutral-1);
+  ----text-secondary: var(----neutral-2);
+  ----violet-0: #F3F0FFFF;
+  ----violet-1: #D0BFFFFF;
+  ----violet-2: #9775FAFF;
+  ----violet-3: #7950F2FF;
+  ----violet-4: #6741D9FF;
+  ----violet-5: #5235ABFF;
+  ----violet-6: #462D91FF;
+  ----violet-7: #3A2578FF;
+  --2xl: 128px;
+  --3xl: 360px;
+  --corner-radius-primary: var(--md);
+  --lg: 16px;
+  --md: 12px;
+  --sm: 8px;
+  --xl: 32px;
+  --xsm: 4px;
 }
 
 /* Variables for light color scheme (Default) */
@@ -151,13 +227,29 @@
   --eventz-background-color-muted: var(--eventz-near-white);
   --eventz-color: var(--eventz-black);
   --eventz-text-selection-color: rgba(244, 93, 44, 0.25);
-  --eventz-primary: var(--eventz-deep-purple);
-  --eventz-primary-background: var(--eventz-deep-purple);
-  --eventz-primary-underline: rgba(189, 60, 19, 0.5);
-  --eventz-primary-hover: #942d0d;
-  --eventz-primary-hover-background: #bd3c13;
-  --eventz-primary-focus: rgba(244, 93, 44, 0.5);
+  --eventz-primary: var(----button-primary-default);
+  --eventz-primary-background: var(----button-primary-default) ;
+  --eventz-primary-underline: var(--eventz-deep-purple);
+  --eventz-primary-hover: var(----button-primary-hover);
+  --eventz-primary-hover-background: var(----button-primary-hover);
+  --eventz-primary-focus: var(----button-primary-pressed);
   --eventz-primary-inverse: #fff;
+
+  --eventz-secondary: var(----button-secondary-surface-default);
+  --eventz-secondary-background: var(----button-secondary-surface-default) ;
+  --eventz-secondary-underline: var(----button-secondary-surface-default);
+  --eventz-secondary-hover: var(----button-secondary-surface-hover);
+  --eventz-secondary-hover-background: var(----button-secondary-surface-hover);
+  --eventz-secondary-focus: var(----button-secondary-surface-pressed);
+  --eventz-secondary-inverse: var(--eventz-black);
+
+  --eventz-contrast: var(--pink-6);
+  --eventz-contrast-background: var(--pink-6) ;
+  --eventz-contrast-underline: var(----pink-6);
+  --eventz-contrast-hover: var(--pink-4);
+  --eventz-contrast-hover-background: var(--pink-4);
+  --eventz-contrast-focus: var(--pink-9);
+  --eventz-contrast-inverse: var(--eventz-off-white);
 }
 
 /* Variables for dark color scheme (Auto) */
@@ -168,13 +260,87 @@
     --eventz-background-color-muted: var(--eventz-black);
     --eventz-color: var(--eventz-grey-ultralight);
     --eventz-text-selection-color: rgba(245, 107, 61, 0.1875);
-    --eventz-primary: var(--eventz-deep-purple);
-    --eventz-primary-background: var(--eventz-deep-purple);
-    --eventz-primary-underline: rgba(245, 107, 61, 0.5);
-    --eventz-primary-hover: #f8a283;
-    --eventz-primary-hover-background: #e74b1a;
-    --eventz-primary-focus: rgba(245, 107, 61, 0.375);
+    --eventz-primary: var(----button-primary-default);
+    --eventz-primary-background: var(----button-primary-default) ;
+    --eventz-primary-underline: var(--eventz-deep-purple);
+    --eventz-primary-hover: var(----button-primary-hover);
+    --eventz-primary-hover-background: var(----button-primary-hover);
+    --eventz-primary-focus: var(----button-primary-pressed);
     --eventz-primary-inverse: #fff;
+
+    --eventz-secondary: var(----button-secondary-surface-default);
+    --eventz-secondary-background: var(----button-secondary-surface-default) ;
+    --eventz-secondary-underline: var(----button-secondary-surface-default);
+    --eventz-secondary-hover: var(----button-secondary-surface-hover);
+    --eventz-secondary-hover-background: var(----button-secondary-surface-hover);
+    --eventz-secondary-focus: var(----button-secondary-surface-pressed);
+    --eventz-secondary-inverse: var(--eventz-black);
+
+    --eventz-contrast: var(--pink-6);
+    --eventz-contrast-background: var(--pink-6) ;
+    --eventz-contrast-underline: var(----pink-6);
+    --eventz-contrast-hover: var(--pink-4);
+    --eventz-contrast-hover-background: var(--pink-4);
+    --eventz-contrast-focus: var(--pink-9);
+    --eventz-contrast-inverse: var(--eventz-off-white);
+
+  /* Dark mode */
+  /* colors */
+  ----brand-hover: var(----lime-2);
+  ----brand-primary: var(----lime-3);
+  ----button-primary-default: var(----violet-5);
+  ----button-primary-hover: var(----violet-3);
+  ----button-primary-pressed: var(----violet-7);
+  ----button-secondary-stroke-default: var(----violet-5);
+  ----button-secondary-stroke-hover: var(----violet-4);
+  ----button-secondary-stroke-pressed: var(----violet-7);
+  ----button-secondary-surface-default: var(----neutral-6);
+  ----button-secondary-surface-hover: var(----neutral-5);
+  ----button-secondary-surface-pressed: var(----neutral-7);
+  ----button-secondary-text-default: var(----neutral-0);
+  ----button-secondary-text-hover: var(----neutral-0);
+  ----button-secondary-text-pressed: var(----neutral-0);
+  ----button-text-color: #FFFFFF;
+  ----navigation-text-default: var(----neutral-2);
+  ----navigation-text-default-2: var(----neutral-2);
+  ----navigation-text-hover: var(----neutral-3);
+  ----navigation-text-pressed: var(----neutral-0);
+  ----surface-background-body: var(----neutral-6);
+  ----surface-background-container: var(----neutral-5);
+  ----surface-background-navigation: var(----neutral-7);
+  ----text-primary: var(----neutral-1);
+  ----text-secondary: var(----neutral-2);
+  /* numbers */
+  --corner-radius-primary: var(--md);
+  /* Light Mode */
+  /* colors */
+  ----brand-hover: var(----lime-4);
+  ----brand-primary: var(----lime-3);
+  ----button-primary-default: var(----violet-5);
+  ----button-primary-hover: var(----violet-4);
+  ----button-primary-pressed: var(----violet-7);
+  ----button-secondary-stroke-default: var(----violet-5);
+  ----button-secondary-stroke-hover: var(----violet-4);
+  ----button-secondary-stroke-pressed: var(----violet-7);
+  ----button-secondary-surface-default: var(----violet-1);
+  ----button-secondary-surface-hover: var(----violet-0);
+  ----button-secondary-surface-pressed: var(----violet-2);
+  ----button-secondary-text-default: var(----violet-5);
+  ----button-secondary-text-hover: var(----violet-4);
+  ----button-secondary-text-pressed: var(----violet-7);
+  ----button-text-color: #FFFFFF;
+  ----navigation-text-default: var(----neutral-9);
+  ----navigation-text-default-2: var(----neutral-9);
+  ----navigation-text-hover: var(----neutral-10);
+  ----navigation-text-pressed: var(----neutral-10);
+  ----surface-background-body: var(----violet-0);
+  ----surface-background-container: var(----neutral-1);
+  ----surface-background-navigation: var(----neutral-7);
+  ----text-primary: var(----neutral-9);
+  ----text-secondary: var(----neutral-8);
+  /* numbers */
+  --corner-radius-primary: var(--md);
+
   }
 }
 /* Variables for dark color scheme (Forced) */
@@ -185,13 +351,87 @@
   --eventz-background-color-muted: var(--eventz-black);
   --eventz-color: var(--eventz-grey-ultralight);
   --eventz-text-selection-color: rgba(245, 107, 61, 0.1875);
-  --eventz-primary: var(--eventz-deep-purple);
-  --eventz-primary-background: var(--eventz-deep-purple);
-  --eventz-primary-underline: rgba(245, 107, 61, 0.5);
-  --eventz-primary-hover: #f8a283;
-  --eventz-primary-hover-background: #e74b1a;
-  --eventz-primary-focus: rgba(245, 107, 61, 0.375);
+  --eventz-primary: var(----button-primary-default);
+  --eventz-primary-background: var(----button-primary-default) ;
+  --eventz-primary-underline: var(--eventz-deep-purple);
+  --eventz-primary-hover: var(----button-primary-hover);
+  --eventz-primary-hover-background: var(----button-primary-hover);
+  --eventz-primary-focus: var(----button-primary-pressed);
   --eventz-primary-inverse: #fff;
+
+  --eventz-secondary: var(--pink-6);
+  --eventz-secondary-background: var(--pink-6) ;
+  --eventz-secondary-underline: var(----pink-6);
+  --eventz-secondary-hover: var(--pink-4);
+  --eventz-secondary-hover-background: var(--pink-4);
+  --eventz-secondary-focus: var(--pink-9);
+  --eventz-secondary-inverse: var(--eventz-off-white);
+
+  --eventz-contrast: var(--pink-6);
+  --eventz-contrast-background: var(--pink-6) ;
+  --eventz-contrast-underline: var(----pink-6);
+  --eventz-contrast-hover: var(--pink-4);
+  --eventz-contrast-hover-background: var(--pink-4);
+  --eventz-contrast-focus: var(--pink-9);
+  --eventz-contrast-inverse: var(--eventz-off-white);
+
+  /* Dark mode */
+  /* colors */
+  ----brand-hover: var(----lime-2);
+  ----brand-primary: var(----lime-3);
+  ----button-primary-default: var(----violet-5);
+  ----button-primary-hover: var(----violet-3);
+  ----button-primary-pressed: var(----violet-7);
+  ----button-secondary-stroke-default: var(----violet-5);
+  ----button-secondary-stroke-hover: var(----violet-4);
+  ----button-secondary-stroke-pressed: var(----violet-7);
+  ----button-secondary-surface-default: var(----neutral-6);
+  ----button-secondary-surface-hover: var(----neutral-5);
+  ----button-secondary-surface-pressed: var(----neutral-7);
+  ----button-secondary-text-default: var(----neutral-0);
+  ----button-secondary-text-hover: var(----neutral-0);
+  ----button-secondary-text-pressed: var(----neutral-0);
+  ----button-text-color: #FFFFFF;
+  ----navigation-text-default: var(----neutral-2);
+  ----navigation-text-default-2: var(----neutral-2);
+  ----navigation-text-hover: var(----neutral-3);
+  ----navigation-text-pressed: var(----neutral-0);
+  ----surface-background-body: var(----neutral-6);
+  ----surface-background-container: var(----neutral-5);
+  ----surface-background-navigation: var(----neutral-7);
+  ----text-primary: var(----neutral-1);
+  ----text-secondary: var(----neutral-2);
+  /* numbers */
+  --corner-radius-primary: var(--md);
+  /* Light Mode */
+  /* colors */
+  ----brand-hover: var(----lime-4);
+  ----brand-primary: var(----lime-3);
+  ----button-primary-default: var(----violet-5);
+  ----button-primary-hover: var(----violet-4);
+  ----button-primary-pressed: var(----violet-7);
+  ----button-secondary-stroke-default: var(----violet-5);
+  ----button-secondary-stroke-hover: var(----violet-4);
+  ----button-secondary-stroke-pressed: var(----violet-7);
+  ----button-secondary-surface-default: var(----violet-1);
+  ----button-secondary-surface-hover: var(----violet-0);
+  ----button-secondary-surface-pressed: var(----violet-2);
+  ----button-secondary-text-default: var(----violet-5);
+  ----button-secondary-text-hover: var(----violet-4);
+  ----button-secondary-text-pressed: var(----violet-7);
+  ----button-text-color: #FFFFFF;
+  ----navigation-text-default: var(----neutral-9);
+  ----navigation-text-default-2: var(----neutral-9);
+  ----navigation-text-hover: var(----neutral-10);
+  ----navigation-text-pressed: var(----neutral-10);
+  ----surface-background-body: var(----violet-0);
+  ----surface-background-container: var(----neutral-1);
+  ----surface-background-navigation: var(----neutral-7);
+  ----text-primary: var(----neutral-9);
+  ----text-secondary: var(----neutral-8);
+  /* numbers */
+  --corner-radius-primary: var(--md);
+
 }
 
 html {
@@ -320,11 +560,13 @@ header {
     -webkit-text-fill-color: transparent;
     font-size: var(--size-fluid-4);
     font-family: "Praetorian-Expanded-Italic";
+    padding: 1.5rem;
     @media screen and (width > 400px) {
       font-size: var(--size-fluid-5);
     }
     @media screen and (width > 715px) {
-      font-size: var(--size-fluid-7);
+
+      font-size: var(--size-fluid-6);
     }
   }
 }
@@ -385,6 +627,21 @@ footer {
       color: var(--eventz-color);
     }
   }
+}
+
+// buttons 
+button, [type=button] {
+  border: none;
+  padding: var(--xsm, 4px) var(--md, 12px) var(--sm, 8px) var(--md, 12px);
+  border-radius: 12px;
+  border-radius: var(--corner-radius-primary, 12px);
+  
+  //background: var(----button-primary-default, #5235AB);
+ 
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
 }
 
 // Carousel
