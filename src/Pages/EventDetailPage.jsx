@@ -5,7 +5,7 @@ import { DATABASE_PATH } from "../App";
 import EventDetailView from "../Components/Events/EventDetailView";
 
 const EventDetailPage = () => {
-	const [event, setEvent] = useState(null);
+	const [event, setEvent] = useState("fetching");
 	const { eventSlug } = useParams();
 	const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ const EventDetailPage = () => {
 			},
 		});
 		const response = await request.data;
-		//console.log(response);
+		console.log(response);
 		setEvent(response[0]);
 		return response;
 	};
@@ -24,13 +24,13 @@ const EventDetailPage = () => {
 	useEffect(() => {
 		//console.log(eventSlug);
 		getTheEvent();
-		//console.log("my-event", event);
+		console.log("my-event", event);
 	}, []);
 
-	if (event == null) {
+	if (event === "fetching") {
 		return <h1>fetching event details</h1>;
 	}
-	if (event.id === undefined) {
+	if (!event) {
 		return <h1>Couldn't find details for that event</h1>;
 	}
 
