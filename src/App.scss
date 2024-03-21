@@ -115,7 +115,16 @@
   src: url("./assets/fonts/praetorianexpandital.ttf") format("truetype");
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap");
+@font-face {
+  font-family: 'Maven Pro';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/mavenpro/v33/7Au9p_AqnyWWAxW2Wk3GzWQIElsO0w.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
 
 :root {
   --header-height: 60px;
@@ -131,6 +140,7 @@
   --eventz-deep-purple: #5a1e69;
   --eventz-mauve: #9775fa;
   --eventz-black: #252521;
+  --eventz-font-sans: 'Maven Pro', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
 }
 
 /* Variables for light color scheme (Default) */
@@ -141,8 +151,8 @@
   --eventz-background-color-muted: var(--eventz-near-white);
   --eventz-color: var(--eventz-black);
   --eventz-text-selection-color: rgba(244, 93, 44, 0.25);
-  --eventz-primary: #bd3c13;
-  --eventz-primary-background: #d24317;
+  --eventz-primary: var(--eventz-deep-purple);
+  --eventz-primary-background: var(--eventz-deep-purple);
   --eventz-primary-underline: rgba(189, 60, 19, 0.5);
   --eventz-primary-hover: #942d0d;
   --eventz-primary-hover-background: #bd3c13;
@@ -158,8 +168,8 @@
     --eventz-background-color-muted: var(--eventz-black);
     --eventz-color: var(--eventz-grey-ultralight);
     --eventz-text-selection-color: rgba(245, 107, 61, 0.1875);
-    --eventz-primary: #f56b3d;
-    --eventz-primary-background: #d24317;
+    --eventz-primary: var(--eventz-deep-purple);
+    --eventz-primary-background: var(--eventz-deep-purple);
     --eventz-primary-underline: rgba(245, 107, 61, 0.5);
     --eventz-primary-hover: #f8a283;
     --eventz-primary-hover-background: #e74b1a;
@@ -175,8 +185,8 @@
   --eventz-background-color-muted: var(--eventz-black);
   --eventz-color: var(--eventz-grey-ultralight);
   --eventz-text-selection-color: rgba(245, 107, 61, 0.1875);
-  --eventz-primary: #f56b3d;
-  --eventz-primary-background: #d24317;
+  --eventz-primary: var(--eventz-deep-purple);
+  --eventz-primary-background: var(--eventz-deep-purple);
   --eventz-primary-underline: rgba(245, 107, 61, 0.5);
   --eventz-primary-hover: #f8a283;
   --eventz-primary-hover-background: #e74b1a;
@@ -187,7 +197,7 @@
 html {
   height: 100%;
   //background-color: var(--pico-background-color);
-  font-family: var(--font-sans);
+  font-family: var(--eventz-font-sans);
 }
 
 body {
@@ -195,6 +205,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--eventz-background-color);
+  font-family: 'Maven Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #root {

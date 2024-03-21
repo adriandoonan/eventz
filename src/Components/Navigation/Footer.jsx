@@ -14,7 +14,7 @@ const Footer = () => {
 				</ul>
 				<ul>
 					<li>
-						<Link to="/submit-event">Submit event</Link>
+						<Link to="/events/submit-event">Submit event</Link>
 					</li>
 					<li>
 						<Link to="/impressum">Impressum</Link>

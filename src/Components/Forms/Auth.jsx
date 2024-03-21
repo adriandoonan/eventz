@@ -15,6 +15,7 @@ const Auth = ({ needsAuth, isAuthenticated, setIsAuthenticated }) => {
 		email: "",
 		password: "",
 	});
+
 	const [badUsername, setBadUsername] = useState(false);
 	const [badPassword, setBadPassword] = useState(false);
 
@@ -41,7 +42,6 @@ const Auth = ({ needsAuth, isAuthenticated, setIsAuthenticated }) => {
 
 			//console.log("got back", response);
 
-			setRequestAuth(false);
 			const jwtToken = response.accessToken;
 
 			const decodedJwtToken = jwtDecode(jwtToken);
