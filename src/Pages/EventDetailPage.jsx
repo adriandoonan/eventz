@@ -34,7 +34,12 @@ const EventDetailPage = () => {
 		return (
 			<article
 				className="container"
-				style={{ marginTop: "3rem", padding: "1rem", placeContent: "center" }}
+				style={{
+					marginTop: "3rem",
+					padding: "1rem",
+					placeContent: "center",
+					textAlign: "center",
+				}}
 			>
 				<h1 style={{ margin: "0 auto" }}>
 					Couldn't find details for that event
@@ -47,7 +52,11 @@ const EventDetailPage = () => {
 				<h3 style={{ margin: "0 auto" }}>
 					You must have zigged when you should have zagged
 				</h3>
-				<button type="button" onClick={() => navigate(-1)}>
+				<button
+					type="button"
+					onClick={() => navigate(-1)}
+					style={{ margin: "0 auto" }}
+				>
 					Go back
 				</button>
 			</article>
