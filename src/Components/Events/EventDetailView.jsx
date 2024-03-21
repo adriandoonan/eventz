@@ -19,6 +19,7 @@ const EventDetailView = ({
 		dateToNormal(startDate);
 	const { dayAndDate: end, timeAndTimeZone: endTime } = dateToNormal(endDate);
 	const navigate = useNavigate();
+
 	return (
 		<div className="event-details">
 			<h1>{name}</h1>
@@ -61,8 +62,8 @@ const EventDetailView = ({
 						location={venue}
 						startDate={startDate.split("T")[0]}
 						endDate={endDate.split("T")[0]}
-						startTime={startTime.split(" ")[0]}
-						endTime={endTime.split(" ")[0]}
+						startTime={startDate.split("T")[1].split(":").slice(0, 2).join(":")}
+						endTime={endDate.split("T")[1].split(":").slice(0, 2).join(":")}
 						timeZone="Europe/Berlin"
 					/>
 					<br />
