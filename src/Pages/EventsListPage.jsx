@@ -78,7 +78,7 @@ const EventsListPage = () => {
 				return response;
 			} catch (error) {
 				if (axios.isCancel(err)) {
-					console.log("successfully aborted");
+					//console.log("successfully aborted");
 				} else {
 					console.error("had an error fetching events from database", error);
 				}

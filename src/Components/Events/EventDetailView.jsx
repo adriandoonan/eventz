@@ -30,7 +30,13 @@ const EventDetailView = ({
 			</article>
 
 			<article style={{ backgroundColor: "unset", fontSize: "larger" }}>
-				<header style={{ width: "unset", backgroundColor: "unset" }}>
+				<header
+					style={{
+						width: "unset",
+						backgroundColor: "unset",
+						height: "fit-content",
+					}}
+				>
 					<span className="event-details-tag-container">
 						{tags?.map(({ value, label }) => (
 							<span key={value} className="event-details-tag">

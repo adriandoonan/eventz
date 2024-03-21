@@ -68,7 +68,7 @@ const AdminPage = ({
 				},
 			});
 			const response = await request.data;
-			console.log("successfully deleted", response);
+			//console.log("successfully deleted", response);
 			makeToast(`${name} rejected`, "🚮");
 			setSubmissions(submissions.filter((submission) => submission.id !== id));
 		} catch (error) {
