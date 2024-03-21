@@ -49,7 +49,7 @@ export const LoginForm = ({
 						type="button"
 						className="contrast"
 						onClick={(event) => {
-							console.log(event);
+							//console.log(event);
 							event.target.closest("dialog").close();
 						}}
 					>

@@ -16,7 +16,7 @@ const EventDetailPage = () => {
 			},
 		});
 		const response = await request.data;
-		console.log(response);
+		//console.log(response);
 		setEvent(response[0]);
 		return response;
 	};
@@ -24,7 +24,7 @@ const EventDetailPage = () => {
 	useEffect(() => {
 		//console.log(eventSlug);
 		getTheEvent();
-		console.log("my-event", event);
+		//console.log("my-event", event);
 	}, []);
 
 	if (event === "fetching") {
