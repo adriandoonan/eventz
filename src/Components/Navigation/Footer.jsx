@@ -6,22 +6,20 @@ const Footer = () => {
 			<nav id="footer-nav">
 				<ul>
 					<li>
-						<Link to="/about">About</Link>
+						<small>
+							Copyright&nbsp;©&nbsp;{new Date().getFullYear()}{" "}
+							&nbsp;Eventz&nbsp;Cooperative
+						</small>
 					</li>
-					<li>
-						<Link to="/events">Events</Link>
-					</li>
-					<li>
-						<Link to="/events-calendar">Calendar</Link>
-					</li>
+				</ul>
+				<ul>
 					<li>
 						<Link to="/impressum">Impressum</Link>
 					</li>
+					<li>
+						<Link to="/admin">Sign in</Link>
+					</li>
 				</ul>
-				<small>
-					Copyright&nbsp;©&nbsp;{new Date().getFullYear()}{" "}
-					&nbsp;Eventz&nbsp;Cooperative
-				</small>
 			</nav>
 		</footer>
 	);

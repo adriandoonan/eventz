@@ -21,9 +21,6 @@ const HeaderNav = ({ isAuthenticated }) => {
 						<Link to="/about">About</Link>
 					</li>
 					<li>
-						<Link to="/admin">Sign in</Link>
-					</li>
-					<li>
 						<button
 							style={{ display: "none" }}
 							type="button"
