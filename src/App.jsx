@@ -21,6 +21,7 @@ import {
 	eventFormReducer,
 	emptyForm,
 } from "./Components/Forms/EventFormReducer";
+import Impressum from "./Pages/Impressum";
 
 /** @type {string}  the database path*/
 export const DATABASE_PATH =
@@ -124,6 +125,8 @@ function App() {
 					/>
 
 					<Route path="/about" element={<AboutPage />} />
+
+					<Route path="/impressum" element={<Impressum />} />
 
 					<Route
 						path="/admin"
