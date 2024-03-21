@@ -163,115 +163,84 @@ const AdminPage = ({
 
 	return (
 		<div>
-			<h1>AdminPage</h1>
+			{!isAuthenticated && (
+				<div className="container" style={{ padding: "4rem 2rem" }}>
+					<p>Looks like you are not authorised to be here</p>
+					<img
+						src="https://c.tenor.com/1pLq4P9mxO8AAAAC/tenor.gif"
+						alt="how disappointing"
+					/>
+				</div>
+			)}
 
-			<button
-				type="button"
-				onClick={() => {
-					setIsAuthenticated(!isAuthenticated);
-				}}
-			>
-				Toggle auth state
-			</button>
-
-			<h2>Users</h2>
-			{isAuthenticated &&
-				users?.map(({ firstname, lastname, id }) => (
-					<p key={id}>
-						{id}: {firstname} {lastname}
-					</p>
-				))}
-
-			<h2>Submissions</h2>
 			{isAuthenticated && (
-				<table>
-					<thead>
-						<tr>
-							<th>submitted on</th>
-							<th>submitted by</th>
-							<th>name</th>
-							<th>description</th>
-							<th>image</th>
-							<th>actions</th>
-						</tr>
-					</thead>
+				<>
+					<h2>Users</h2>
+					{users?.map(({ firstname, lastname, id }) => (
+						<p key={id}>
+							{id}: {firstname} {lastname}
+						</p>
+					))}
+				</>
+			)}
 
-					<tbody>
-						{submissions?.map(
-							({
-								created,
-								organiser,
-								name,
-								venue,
-								location,
-								description,
-								promoImage,
-								id,
-								startDate,
-								endDate,
-								tags,
-							}) => (
-								<tr key={id}>
-									<td>
-										{dateToNormal(created).dayAndDate}
-										<br />
-										{dateToNormal(created).timeAndTimeZone}
-									</td>
-									<td>{organiser}</td>
-									<td>
-										{name}
-										<br />
-										<br />
-										{tags?.map(({ label }) => label).join(", ")}
-									</td>
-									<td>{description}</td>
-									<td>
-										<img
-											className="admin-panel-image-preview"
-											src={promoImage}
-											alt={`promo pic for ${name}`}
-										/>
-									</td>
-									<td style={{ display: "flex", flexDirection: "column" }}>
-										<button
-											type="button"
-											className="primary"
-											onClick={() => {
-												setPreviewEvent({
-													organiser,
-													name,
-													description,
-													promoImage,
-													id,
-													startDate,
-													endDate,
-													venue,
-													location,
-												});
-												setPreviewOpen(true);
-											}}
-										>
-											preview
-										</button>
-										<button
-											type="button"
-											className="primary"
-											onClick={() => {
-												setEventToEdit({
-													organiser,
-													name,
-													description,
-													promoImage,
-													id,
-													startDate,
-													endDate,
-													venue,
-													location,
-													created,
-												});
-												dispatch({
-													type: "overwrite_state",
-													payload: {
+			{isAuthenticated && (
+				<>
+					<h2>Submissions</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>submitted on</th>
+								<th>submitted by</th>
+								<th>name</th>
+								<th>description</th>
+								<th>image</th>
+								<th>actions</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							{submissions?.map(
+								({
+									created,
+									organiser,
+									name,
+									venue,
+									location,
+									description,
+									promoImage,
+									id,
+									startDate,
+									endDate,
+									tags,
+								}) => (
+									<tr key={id}>
+										<td>
+											{dateToNormal(created).dayAndDate}
+											<br />
+											{dateToNormal(created).timeAndTimeZone}
+										</td>
+										<td>{organiser}</td>
+										<td>
+											{name}
+											<br />
+											<br />
+											{tags?.map(({ label }) => label).join(", ")}
+										</td>
+										<td>{description}</td>
+										<td>
+											<img
+												className="admin-panel-image-preview"
+												src={promoImage}
+												alt={`promo pic for ${name}`}
+											/>
+										</td>
+										<td style={{ display: "flex", flexDirection: "column" }}>
+											<button
+												type="button"
+												className="primary"
+												onClick={() => {
+													setPreviewEvent({
 														organiser,
 														name,
 														description,
@@ -281,33 +250,68 @@ const AdminPage = ({
 														endDate,
 														venue,
 														location,
-													},
-												});
-												setEditOpen(true);
-											}}
-										>
-											edit
-										</button>
-										<button
-											type="button"
-											className="secondary"
-											onClick={() => handleApprove(id)}
-										>
-											approve
-										</button>
-										<button
-											type="button"
-											className="contrast"
-											onClick={() => handleDelete(id, name)}
-										>
-											reject
-										</button>
-									</td>
-								</tr>
-							),
-						)}
-					</tbody>
-				</table>
+													});
+													setPreviewOpen(true);
+												}}
+											>
+												preview
+											</button>
+											<button
+												type="button"
+												className="primary"
+												onClick={() => {
+													setEventToEdit({
+														organiser,
+														name,
+														description,
+														promoImage,
+														id,
+														startDate,
+														endDate,
+														venue,
+														location,
+														created,
+													});
+													dispatch({
+														type: "overwrite_state",
+														payload: {
+															organiser,
+															name,
+															description,
+															promoImage,
+															id,
+															startDate,
+															endDate,
+															venue,
+															location,
+														},
+													});
+													setEditOpen(true);
+												}}
+											>
+												edit
+											</button>
+											<button
+												type="button"
+												className="secondary"
+												onClick={() => handleApprove(id)}
+											>
+												approve
+											</button>
+											<button
+												type="button"
+												className="contrast"
+												onClick={() => handleDelete(id, name)}
+											>
+												reject
+											</button>
+										</td>
+									</tr>
+								),
+							)}
+						</tbody>
+					</table>
+				</>
 			)}
 
 			<dialog id="edit-event-dialog" open={editOpen}>
