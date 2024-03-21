@@ -58,6 +58,7 @@ const EventDetailView = ({
 					</p>
 					<AddToCalendarButton
 						name={name}
+						description={description}
 						options={["Apple", "Google"]}
 						location={venue}
 						startDate={startDate.split("T")[0]}
