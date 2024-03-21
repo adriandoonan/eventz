@@ -11,7 +11,6 @@ const setCookie = (key, value, options) => {
 };
 
 const Auth = ({ needsAuth, isAuthenticated, setIsAuthenticated }) => {
-	const [requestAuth, setRequestAuth] = useState(true);
 	const [userDetails, setUserDetails] = useState({
 		email: "",
 		password: "",
@@ -71,7 +70,7 @@ const Auth = ({ needsAuth, isAuthenticated, setIsAuthenticated }) => {
 			) {
 				console.error("could not find user", error.response.data);
 				setBadUsername(true);
-				console.log("username state", badUsername);
+				//console.log("username state", badUsername);
 			}
 			if (
 				error.response.status === 400 &&

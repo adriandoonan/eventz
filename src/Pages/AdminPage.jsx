@@ -29,7 +29,7 @@ const AdminPage = ({
 			},
 		});
 		const response = await request.data;
-		console.log(response);
+		//console.log(response);
 		setUsers(response);
 	};
 
@@ -101,10 +101,10 @@ const AdminPage = ({
 			const removeFromSubmissionsResponse = await removeFromSubmissions.data;
 			setSubmissions(submissions.filter((submission) => submission.id !== id));
 
-			console.log(
-				`event created with id: ${addToEventsResponse.id}`,
-				addToEventsResponse,
-			);
+			// console.log(
+			// 	`event created with id: ${addToEventsResponse.id}`,
+			// 	addToEventsResponse,
+			// );
 			makeToast(
 				`${addToEventsResponse.name} approved and given id ${addToEventsResponse.id}, tell your friends`,
 				"🎉",
@@ -116,23 +116,19 @@ const AdminPage = ({
 	};
 
 	useEffect(() => {
-		console.log("needs auth", needsAuth);
-	}, []);
-
-	useEffect(() => {
 		const dialog = document.querySelector("#login-dialog");
 		const currentToken = Cookies.get("jwtToken");
 		if (currentToken && `${jwtDecode(currentToken).exp}000` - Date.now() < 0) {
-			console.log("yo, this dudes token has expired!");
+			//console.log("yo, this dudes token has expired!");
 			setIsAuthenticated(false);
 			setNeedsAuth(true);
 		}
 		if (currentToken && `${jwtDecode(currentToken).exp}000` - Date.now() > 0) {
-			console.log("yo, this dudes token is still valid!");
+			//console.log("yo, this dudes token is still valid!");
 			setIsAuthenticated(true);
 		}
 		setNeedsAuth(true);
-		console.log("needs after", needsAuth);
+		//console.log("needs after", needsAuth);
 		dialog.show();
 		isAuthenticated && getUsers();
 		dialog.close();
@@ -147,7 +143,7 @@ const AdminPage = ({
 					},
 				});
 				const response = await request.data;
-				console.log(response);
+				//console.log(response);
 				setSubmissions(response);
 			} catch (error) {
 				console.log("had a problem getting submissions", error);
