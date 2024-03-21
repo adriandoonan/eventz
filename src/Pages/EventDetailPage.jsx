@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { DATABASE_PATH } from "../App";
 import EventDetailView from "../Components/Events/EventDetailView";
@@ -7,7 +7,6 @@ import EventDetailView from "../Components/Events/EventDetailView";
 const EventDetailPage = () => {
 	const [event, setEvent] = useState("fetching");
 	const { eventSlug } = useParams();
-	const navigate = useNavigate();
 
 	const getTheEvent = async () => {
 		const request = await axios(`${DATABASE_PATH}/events`, {
@@ -38,10 +37,6 @@ const EventDetailPage = () => {
 	return (
 		<>
 			<EventDetailView {...event} />
-
-			<button type="button" onClick={() => navigate(-1)}>
-				Back
-			</button>
 		</>
 	);
 };
