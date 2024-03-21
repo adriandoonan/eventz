@@ -11,11 +11,11 @@ const setCookie = (key, value, options) => {
 };
 
 const Auth = ({ needsAuth, isAuthenticated, setIsAuthenticated }) => {
-	const [requestAuth, setRequestAuth] = useState(true);
 	const [userDetails, setUserDetails] = useState({
 		email: "",
 		password: "",
 	});
+
 	const [badUsername, setBadUsername] = useState(false);
 	const [badPassword, setBadPassword] = useState(false);
 
@@ -42,7 +42,6 @@ const Auth = ({ needsAuth, isAuthenticated, setIsAuthenticated }) => {
 
 			//console.log("got back", response);
 
-			setRequestAuth(false);
 			const jwtToken = response.accessToken;
 
 			const decodedJwtToken = jwtDecode(jwtToken);
@@ -71,7 +70,7 @@ const Auth = ({ needsAuth, isAuthenticated, setIsAuthenticated }) => {
 			) {
 				console.error("could not find user", error.response.data);
 				setBadUsername(true);
-				console.log("username state", badUsername);
+				//console.log("username state", badUsername);
 			}
 			if (
 				error.response.status === 400 &&

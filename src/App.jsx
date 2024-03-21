@@ -1,7 +1,5 @@
 import "./App.scss";
 import { Routes, Route } from "react-router-dom";
-import axios from "axios";
-import Cookies from "js-cookie";
 
 import HomePage from "./Pages/HomePage";
 import EventsListPage from "./Pages/EventsListPage";
@@ -16,10 +14,9 @@ import Footer from "./Components/Navigation/Footer";
 import AboutPage from "./Pages/AboutPage";
 import EventsCalendarPage from "./Pages/EventsCalendarPage";
 
-import localDatabase from "./eventz-db.json";
-import { useEffect, useState, useReducer } from "react";
+import { useState, useReducer } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import EventsTeaserPage from "./Pages/EventsTeaserPage";
+
 import {
 	eventFormReducer,
 	emptyForm,
@@ -104,8 +101,6 @@ function App() {
 			<main className="main-content">
 				<Routes>
 					<Route path="/" element={<HomePage />} />
-
-					<Route path="/events-teaser" element={<EventsTeaserPage />} />
 
 					<Route path="/events" element={<EventsListPage />} />
 
