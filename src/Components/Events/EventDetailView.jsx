@@ -1,5 +1,6 @@
 import { dateToNormal } from "../../App";
 import { useNavigate } from "react-router-dom";
+import { AddToCalendarButton } from "add-to-calendar-button-react";
 
 const EventDetailView = ({
 	name,
@@ -51,9 +52,22 @@ const EventDetailView = ({
 				})}
 				<footer style={{ backgroundColor: "unset" }}>
 					<p className="event-details-page-times">
-						This event is happening from {start} at {startTime} to {end} at{" "}
-						{endTime}.
+						This event is happening from {start} at{" "}
+						{startTime.split(" ").slice(0, 1).join(" ")} to {end} at {endTime}.
 					</p>
+					<AddToCalendarButton
+						name={name}
+						options={["Apple", "Google"]}
+						location={venue}
+						startDate={startDate.split("T")[0]}
+						endDate={endDate.split("T")[0]}
+						startTime={startTime.split(" ")[0]}
+						endTime={endTime.split(" ")[0]}
+						timeZone="Europe/Berlin"
+					/>
+					<br />
+					<br />
+
 					<p>
 						Find the quickest way from you to the venue on Google maps:
 						<br />
