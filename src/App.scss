@@ -525,6 +525,7 @@ dialog#edit-event-dialog {
 
   > .event-details-hero {
     display: grid;
+    padding: 0;
 
     > img {
       @media screen and (width > 1000px) {
@@ -539,6 +540,7 @@ dialog#edit-event-dialog {
       text-align: center;
       font-family: Praetorian;
       max-inline-size: 100%;
+      margin-bottom: 0;
     }
   }
   .event-details-tag-container {
@@ -546,8 +548,11 @@ dialog#edit-event-dialog {
     flex-flow: row wrap;
     gap: 1rem;
     margin-bottom: 1rem;
+    
     span.event-details-tag {
-      background-color: var(--eventz-background-color);
+      background-color: var(--eventz-deep-purple);
+      color: var(--eventz-off-white);
+      font-family: Praetorian;
       padding: 0.3rem 0.5rem;
       border-radius: 4px;
     }
