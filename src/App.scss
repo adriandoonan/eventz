@@ -138,6 +138,7 @@
   --eventz-pink: #f06595;
   --eventz-purple: #be4bdb;
   --eventz-deep-purple: #5a1e69;
+  --eventz-deep-purple-tint: #500a69;
   --eventz-mauve: #9775fa;
   --eventz-black: #252521;
   --eventz-font-sans: 'Maven Pro', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
@@ -153,10 +154,10 @@
   --eventz-text-selection-color: rgba(244, 93, 44, 0.25);
   --eventz-primary: var(--eventz-deep-purple);
   --eventz-primary-background: var(--eventz-deep-purple);
-  --eventz-primary-underline: rgba(189, 60, 19, 0.5);
-  --eventz-primary-hover: #942d0d;
-  --eventz-primary-hover-background: #bd3c13;
-  --eventz-primary-focus: rgba(244, 93, 44, 0.5);
+  --eventz-primary-underline: var(--eventz-deep-purple);
+  --eventz-primary-hover: var(--eventz-deep-purple-tint);
+  --eventz-primary-hover-background: var(--eventz-deep-purple-tint);
+  --eventz-primary-focus: var(--eventz-deep-purple-tint);
   --eventz-primary-inverse: #fff;
 }
 
@@ -170,10 +171,10 @@
     --eventz-text-selection-color: rgba(245, 107, 61, 0.1875);
     --eventz-primary: var(--eventz-deep-purple);
     --eventz-primary-background: var(--eventz-deep-purple);
-    --eventz-primary-underline: rgba(245, 107, 61, 0.5);
-    --eventz-primary-hover: #f8a283;
-    --eventz-primary-hover-background: #e74b1a;
-    --eventz-primary-focus: rgba(245, 107, 61, 0.375);
+    --eventz-primary-underline: var(--eventz-deep-purple);
+    --eventz-primary-hover: var(--eventz-deep-purple-tint);
+    --eventz-primary-hover-background: var(--eventz-deep-purple-tint);
+    --eventz-primary-focus: var(--eventz-deep-purple-tint);
     --eventz-primary-inverse: #fff;
   }
 }
@@ -187,10 +188,10 @@
   --eventz-text-selection-color: rgba(245, 107, 61, 0.1875);
   --eventz-primary: var(--eventz-deep-purple);
   --eventz-primary-background: var(--eventz-deep-purple);
-  --eventz-primary-underline: rgba(245, 107, 61, 0.5);
-  --eventz-primary-hover: #f8a283;
-  --eventz-primary-hover-background: #e74b1a;
-  --eventz-primary-focus: rgba(245, 107, 61, 0.375);
+  --eventz-primary-underline: var(--eventz-deep-purple);
+  --eventz-primary-hover: var(--eventz-deep-purple-tint);
+  --eventz-primary-hover-background: var(--eventz-deep-purple-tint);
+  --eventz-primary-focus: var(--eventz-deep-purple-tint);
   --eventz-primary-inverse: #fff;
 }
 
